@@ -1,0 +1,14 @@
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #000000;
+    font: 81.3%/1.538em "Lucida Grande","Lucida Sans Unicode",sans-serif;
+}
+
+#header-wrapper {
+    background: url("../images/header_texture.png") repeat-x scroll 0 0 transparent;
+    height: 65px;
+}
+#footer-wrapper {
+    border-top: 1px solid #C9C9C9;
+    padding-top: 45px;
+}

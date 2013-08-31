@@ -1,0 +1,11 @@
+name = Rescuegroups 
+description = Query the Rescuegroups API 
+package = Rescuegroups
+dependencies[] = views
+version = "7.x-1.0"
+core = "7.x"
+project = "rescuegroups"
+configure = admin/config/rescuegroups
+
+
+

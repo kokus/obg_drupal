@@ -1,0 +1,11 @@
+name = Last.fm User
+description = Last.fm user account integration
+core = 7.x
+package = Last.fm
+
+; Information added by drupal.org packaging script on 2011-04-14
+version = "7.x-2.x-dev"
+core = "7.x"
+project = "lastfm"
+datestamp = "1302740687"
+

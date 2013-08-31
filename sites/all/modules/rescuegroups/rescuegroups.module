@@ -1,0 +1,390 @@
+<?php
+
+/**
+* Implements of hook_permission()
+*/
+function rescuegroups_permission() {
+  return array(
+    'administer rescuegroups' => array(
+      'title' => t('Administer Rescuegoups'),
+      'description' => t('Perform administration tasks for the rescuegroups module.'),
+    ),
+  );
+}
+
+/**
+* Implements of hook_menu()
+*/
+function rescuegroups_menu() {
+  $items['admin/config/rescuegroups'] = array(
+      'title' => 'rescuegoups API settings',
+      'type' => MENU_NORMAL_ITEM,
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('rescuegroups_admin_form'),
+      'access arguments' => array('administer rescuegoups'),
+  );
+
+  //TESTING ONLY
+  $items['rescuegroups/test'] = array(
+    'title' => 'Testing Page',
+    'page callback' => '_test_stuff',
+    'access arguments' => array('access content'),
+    'access callback' => true,
+  );
+
+  return $items;
+}
+
+
+function _test_stuff() { 
+    //$animals = _rescuegroups_pull_animals();
+   $events = _rescuegroups_pull_events();
+    dsm('record:');
+    //dsm();
+    print_r('<pre>');
+    print_r($events);
+
+    $content = array(
+    'content' => array(
+      '#type' => 'markup',
+      '#markup' => '<p>Done!</p>',
+    ),
+  );
+   return $content;
+}
+
+
+/**
+* Administration Form for rescuegroups module 
+*/
+function rescuegroups_admin_form($form, &$form_state) {
+  $form = array();
+  $form['rescuegroups_username'] = array(
+    '#type' => 'textfield', 
+    '#title' => t('API Username'), 
+    '#description' => t('Enter your Rescuegoups Account API username.'),
+    '#default_value' => variable_get('rescuegroups_username', ' '),
+    '#required' => TRUE,
+  );
+  $form['rescuegroups_password'] = array(
+    '#type' => 'textfield', 
+    '#title' => t('API Password'), 
+    '#description' => t('Enter your Rescuegoups Account API password.'),
+    '#default_value' => variable_get('rescuegroups_password', ' '),
+    '#required' => TRUE,
+  );
+  $form['rescuegroups_account'] = array(
+    '#type' => 'textfield', 
+    '#title' => t('API Account'), 
+    '#description' => t('Enter your Rescuegoups Account Number.'),
+    '#default_value' => variable_get('rescuegroups_account', ' '),
+    '#required' => TRUE,
+  );
+  return system_settings_form($form);
+}
+
+/**
+* Implements hook_cron()
+*/
+function rescuegroups_cron() {
+
+  _rescuegroups_pull_animals();
+  _rescuegroups_pull_events();
+
+}
+
+/**
+ * Imports animal data from rescuegroups API into rescuegroups_animal custom table
+ */
+function _rescuegroups_pull_animals() {
+  $lastupdate='01/01/2000 12:00';
+  $items = array();
+
+  // Check if it is the first time and use lastupdate '01/01/2000'
+  $last_update = db_query("SELECT MAX(animal_last_update) FROM {rescuegroups_animal}")->fetchField();
+  if($last_update) {
+    $lastupdate = $last_update;
+  }
+
+  //get credentials from Rescuegroups API
+  $credentials = get_rescuegroups_api_credentials();
+
+ //Get animal that have last updated field is greater than the most recent last updated in DB
+  $api_query = get_animal_query($credentials,2000,$lastupdate);
+  $datajson = curl_json($api_query);
+  //return $datajson;
+  foreach ($datajson as $row) {
+    $animal_ID = $row['animalID'];
+    //check if animal row exists
+    $result = db_query("SELECT 1 FROM rescuegroups_animal where animal_id = '".$animal_ID."'");
+   
+    //Animal Exists - UPDATE
+    if($result->rowCount()>0) {        
+      //UPDATE ANIMAL
+      update_animal($row,$animal_ID);
+    } else {
+      // INSERT NEW ANIMAL
+      insert_animal($row);
+    }
+  }
+
+}
+
+/**
+ * Imports event data from rescuegroups API into rescuegroups_event custom table
+ */
+function _rescuegroups_pull_events() {
+  $items = array();
+
+  //empty both tables 
+  db_delete('rescuegroups_event')->execute();
+  db_delete('rescuegroups_event_animal')->execute();
+
+  //get credentials from Rescuegroups API
+  $credentials = get_rescuegroups_api_credentials();
+  $api_query = get_event_query($credentials,200);
+  $data_json = curl_json($api_query);
+
+  foreach ($data_json as $row) {
+      insert_event($row);
+  }
+  //return $data_json;
+}
+
+
+
+function get_rescuegroups_api_credentials() {
+  module_load_include('php','rescuegroups','curl_json');
+  $data_auth = array(
+    "username" => variable_get('rescuegroups_username', ' '),
+    "password" => variable_get('rescuegroups_password', ' '),
+    "accountNumber" => variable_get('rescuegroups_account', ' '),
+    "action" => "login"
+  );
+  $data_auth_json = curl_json($data_auth);
+  return $data_auth_json;
+}
+
+
+/**
+* Prepares data array for specific rescue groups API query ( Animals )
+*/
+
+function get_animal_query($credentials,$limit,$lastupdate) {
+  $today = date("m/d/Y");
+  $data = array(
+      "token" =>  $credentials['token'],
+      "tokenHash" => $credentials['tokenHash'],
+      "objectType" => "animals",
+      "objectAction" => "search",
+      "search" => array (
+          "resultStart" => 0,
+          "resultLimit" => $limit,
+          "resultSort" => "animalID",
+          "resultOrder" => "asc",
+          "calcFoundRows" => "Yes",
+          "filters" => array(
+            array(
+              "fieldName" => "animalSpecies",
+              "operation" => "equal",
+              "criteria" => "Dog",
+            ),
+            array(
+                "fieldName" => "animalUpdatedDate",
+                "operation" => "greaterthanorequal",
+                "criteria" => $lastupdate,
+            ),
+       ),
+       "fields" => array(
+                  "animalId",
+                  "animalStatus",
+                  "animalName",
+                  "animalSex",
+                  "animalGeneralAge",
+                  "animalColorDetails",
+                  "animalOKWithCats",
+                  "animalOKWithDogs",
+                  "animalOKWithKids",
+                  "animalDescription",
+                  "animalPictures",
+                  "animalSpecialneeds",
+                  "animalSpecialneedsDescription",
+                  "animalNeedsFoster",
+                  "fosterFirstname",
+                  "fosterLastname",
+                  "fosterEmail",
+                  "animalHighlightOrder",
+                  "animalAdoptedDate",
+                  "animalUpdatedDate"
+                ),
+      ),
+  );
+
+  return $data;
+}
+
+
+/**
+* Prepares data array for specific rescue groups API query ( Events )
+*/
+
+function get_event_query($credentials,$limit) {
+  $today = date("m/d/Y");
+  $data = array(
+      "token" =>  $credentials['token'],
+      "tokenHash" => $credentials['tokenHash'],
+      "objectType" => "events",
+      "objectAction" => "search",
+      "search" => array (
+          "resultStart" => 0,
+          "resultLimit" => $limit,
+          "resultSort" => "eventEnd",
+          "resultOrder" => "desc",
+          "calcFoundRows" => "Yes",
+          "filters" => array(
+            array(
+              "fieldName" => "eventSpecies",
+              "operation" => "equal",
+              "criteria" => "Dog",
+            ),
+            array(
+             "fieldName" => "eventStart",
+             "operation" => "greaterthanorequal",
+             "criteria" => "rg:today",
+            ),
+       ),
+      "fields" => array(
+                    "eventID",
+                    "eventName",
+                    "eventDescription",
+                    "eventStart",
+                    "eventEnd",
+                    "eventAnimalAttendance",
+                    "eventLocationID"
+                  ),
+      ),
+  );
+
+  return $data;
+}
+
+/**
+* Prepares data array for specific rescue groups API query ( Events Animal Attending )
+*/
+function get_animal_event_query($event_id) {
+  $data = array(
+    "apikey" => "UJpSrvX3",
+    "objectType" => "eventanimalattendance",
+    "objectAction" => "publicSearch",
+    "search" => array (
+        "resultStart" => 0,
+        "resultLimit" => 20,
+        "resultSort" => "attendanceID",
+        "resultOrder" => "asc",
+        "filters" => array(
+            array(
+                "fieldName" => "attendanceEventID",
+                "operation" => "equals",
+                "criteria" => $event_id,
+            ),
+        ),
+        "fields" => array("attendanceEventID","attendanceAnimalID","attendanceStatus")
+    ),
+  );
+  return $data;
+}
+
+function insert_animal($row) {
+   //Animal Doesn't Exist - INSERT 
+    db_insert('rescuegroups_animal')
+      ->fields(array(
+        'animal_id' => $row['animalID'],
+        'animal_status' => $row['animalStatus'],
+        'animal_name' => $row['animalName'],
+        'animal_sex' => $row['animalSex'],
+        'animal_general_age' => $row['animalGeneralAge'],
+        'animal_color_details' => $row['animalColorDetails'],
+        'animal_ok_cats' => $row['animalOKWithCats'],
+        'animal_ok_dogs' => $row['animalOKWithDogs'],
+        'animal_ok_kids' => $row['animalOKWithKids'],
+        'animal_description' => $row['animalDescription'],
+        'animal_special_needs' => $row['animalSpecialneeds'],
+        'animal_special_needs_description' => $row['animalSpecialneedsDescription'],
+        'animal_needs_foster' => $row['animalNeedsFoster'],
+        'foster_firstname' => $row['fosterFirstname'],
+        'foster_lastname' => $row['fosterLastname'],
+        'foster_email' => $row['fosterEmail'],
+        'animal_highlight_order' => $row['animalHighlightOrder'],
+        'animal_adopted_date' => (empty($row['animalAdoptedDate'])) ? null : date('Y-m-d', strtotime($row['animalAdoptedDate'])),
+        'animal_last_update' => date('Y-m-d H:i', strtotime($row['animalUpdatedDate']))
+      ))
+      ->execute();
+      //Insert images if $row['animalPictures']
+      if(count($row['animalPictures']) > 0) {
+        foreach ($row['animalPictures'] as $imagerow) {
+          db_insert('rescuegroups_animal_image')
+            ->fields(array(
+              'animal_id' => $row['animalID'],
+              'animal_url_image_full' => $imagerow['urlSecureFullsize']
+            ))
+            ->execute();
+        }
+      }
+}
+
+function update_animal($row,$animalID) {
+    db_update('rescuegroups_animal') // Table name no longer needs {}
+      ->fields(array(
+        'animal_status' => $row['animalStatus'],
+        'animal_name' => $row['animalName'],
+        'animal_sex' => $row['animalSex'],
+        'animal_general_age' => $row['animalGeneralAge'],
+        'animal_color_details' => $row['animalColorDetails'],
+        'animal_ok_cats' => $row['animalOKWithCats'],
+        'animal_ok_dogs' => $row['animalOKWithDogs'],
+        'animal_ok_kids' => $row['animalOKWithKids'],
+        'animal_description' => $row['animalDescription'],
+        'animal_special_needs' => $row['animalSpecialneeds'],
+        'animal_special_needs_description' => $row['animalSpecialneedsDescription'],
+        'animal_needs_foster' => $row['animalNeedsFoster'],
+        'foster_firstname' => $row['fosterFirstname'],
+        'foster_lastname' => $row['fosterLastname'],
+        'foster_email' => $row['fosterEmail'],
+        'animal_highlight_order' => $row['animalHighlightOrder'],
+        'animal_adopted_date' => (empty($row['animalAdoptedDate'])) ? null : date('Y-m-d', strtotime($row['animalAdoptedDate'])),
+        'animal_last_update' => date('Y-m-d H:i', strtotime($row['animalUpdatedDate']))
+      ))
+      ->condition('animal_id', $animalID, '=')
+      ->execute();
+}
+
+function insert_event($row) {
+  db_insert('rescuegroups_event')
+      ->fields(array(
+        'event_id' => $row['eventID'],
+        'event_name' => $row['eventName'],
+        'event_description' => $row['eventDescription'],
+        'event_location' => $row['locationID'],
+        'event_start_date' => date('Y-m-d H:i', strtotime($row['eventStart'])),
+        'event_end_date' => date('Y-m-d H:i', strtotime($row['eventEnd'])),
+      ))
+      ->execute();
+      //Insert animals attending  if $row['eventAnimalAttendance'] 
+
+      if(count($row['eventAnimalAttendance']) > 0) {
+
+        $api_query = get_animal_event_query($row['eventID']);
+        $data_json = curl_json($api_query);
+
+        foreach ($data_json as $animalrow) {
+          db_insert('rescuegroups_event_animal')
+            ->fields(array(
+              'event_id' => $animalrow['attendanceEventID'],
+              'animal_id' => $animalrow['attendanceAnimalID'],
+              'animal_attendance_status' => $animalrow['attendanceStatus']
+            ))
+            ->execute();
+        }
+      }
+
+}

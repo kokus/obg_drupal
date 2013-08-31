@@ -1,0 +1,35 @@
+diff --git a/sites/all/modules/contrib/feeds_sql/plugins/FeedsSQLFetcher.inc b/sites/all/modules/contrib/feeds_sql/plugins/FeedsSQLFetcher.inc
+index 3cf4c2d..752f095 100644
+--- a/sites/all/modules/contrib/feeds_sql/plugins/FeedsSQLFetcher.inc
++++ b/sites/all/modules/contrib/feeds_sql/plugins/FeedsSQLFetcher.inc
+@@ -6,6 +6,21 @@
+  */
+ 
+ /**
++ * Base class for all fetcher results.
++ */
++class FeedsSQLFetcherResult extends FeedsFetcherResult {
++  /**
++   * Override parent::sanitizeRaw().
++   */
++  public function sanitizeRaw($raw) {
++    if (is_string($raw) && substr($raw, 0, 3) == pack('CCC', 0xef, 0xbb, 0xbf)) {
++      $raw = substr($raw, 3);
++    }
++    return $raw;
++  }
++}
++
++/**
+  * Fetches data via pdo connection.
+  */
+ class FeedsSQLFetcher extends FeedsFetcher {
+@@ -37,7 +52,7 @@ class FeedsSQLFetcher extends FeedsFetcher {
+       // Switch back to the default database
+       db_set_active();
+     }
+-    return new FeedsFetcherResult($results);
++    return new FeedsSQLFetcherResult($results);
+   }
+   
+   /**

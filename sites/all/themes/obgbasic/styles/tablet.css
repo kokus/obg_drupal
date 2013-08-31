@@ -1,0 +1,20 @@
+/* 1. Global - used to be 768 change for ipad portrait with new OBG logo*/	 
+	.container {
+		width: 768px;
+		margin: 0 auto;
+	}
+
+	/* 2. Header and Navigation */
+		header nav ul li {		
+			margin-right: 5px;		
+		}
+
+
+	div.page_wrapper .page {
+		width: 62%;
+	}
+	
+	div.page_wrapper .content img {
+		width: 100%;
+		height:auto;
+	}

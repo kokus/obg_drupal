@@ -1,0 +1,4 @@
+name = Rescuegroups API 
+description = Testing consuming HTTP API from rescuegroups
+core = 7.x
+package = Custom
