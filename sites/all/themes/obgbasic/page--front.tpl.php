@@ -217,33 +217,33 @@
     <div class="container">
 
       <?php if ($page['footer_first'] || $page['footer_second'] || $page['footer_third'] || $page['footer_fourth']) :?>
-        <div class="container clearfix">
+       
 
-            <div class="first one-fourth footer-area">
+            <div class="first one_fourth footer-area">
             <?php if ($page['footer_first']) :?>
             <?php print render($page['footer_first']); ?>
             <?php endif; ?>
             </div>
 
-            <div class="one-fourth footer-area">
+            <div class="one_fourth footer-area">
             <?php if ($page['footer_second']) :?>
             <?php print render($page['footer_second']); ?>
             <?php endif; ?>
             </div>
 
-            <div class="one-fourth footer-area">
+            <div class="one_fourth footer-area">
             <?php if ($page['footer_third']) :?>
             <?php print render($page['footer_third']); ?>
             <?php endif; ?> 
             </div>
 
-            <div class="one-fourth footer-area last">
+            <div class="one_fourth footer-area column_last">
             <?php if ($page['footer_fourth']) :?>
             <?php print render($page['footer_fourth']); ?>
             <?php endif; ?> 
             </div>
 
-        </div>
+   
       <?php endif; ?>
       
       <?php print render($page['footer']); ?>

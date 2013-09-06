@@ -425,57 +425,7 @@ div.flexslider-container {
 		div#home_items .one_third { margin-bottom: 0; }
 	
 	
-	/* News */
-	div.events ul { list-style: none }
-	div.news ul li {
-		margin-bottom: 15px;
-		padding-bottom: 15px;
-		border-bottom: 1px solid #e1e1e1;
-	}
-	div.news ul li:last-child {
-		/*border-bottom: none;*/
-		border-bottom: 1px solid #E1E1E1;
-	}
-    /* added JV 01-12 */
-    div.news ul span {
-    	float:left;
-    	padding-right: 10px;
-    }
 
-	/* Events */
-	div.events ul { list-style: none; }
-		div.events ul li {
-			padding-bottom: 10px;
-			border-bottom: 1px solid #e1e1e1;
-			margin-bottom: 10px;
-		}
-		div.events ul li .date {
-			width: 40px;
-			height: 33px;
-			padding-top: 7px;
-			background: #006699;
-			color: #fff;
-			-webkit-border-radius: 5px;
-			-moz-border-radius: 5px;
-			border-radius: 5px;
-			text-align: center;
-			margin-right: 10px;	
-			font-size: 13px;	
-			float: left;
-			font-family: 'Cabin';
-			line-height: 13px;
-		}
-			div.events ul li .date span {
-				font-size: 18px;
-				font-weight: bold;	
-			}
-		div.events ul li .details {
-			margin-left: 50px;
-		}
-			div.events ul li .details a{
-				display: block;
-				color: #413b31;
-			}
 	/* Sponsors */
 	div#sponsors ul {
 		overflow: hidden;
@@ -923,7 +873,7 @@ div#donate div#actions { width: auto; }
 /*--------------------------------------------
 8. Widgets - Blocks 
 ---------------------------------------------*/
-div.block {}
+/*div.block {}
 	div.block h5 {
 		border-bottom: 1px dashed #c9c9c9;
 		padding-bottom: 5px;
@@ -933,7 +883,7 @@ div.block {}
 	aside div.block {
 		clear: both;
 		margin-bottom: 30px;
-	}
+	} */
 
 /*--------------------------------------------
 8. Widgets
@@ -1193,9 +1143,13 @@ blockquote {
 			content: "\2014 \0020"; 
 		}
 		blockquote cite a, blockquote cite a:visited, blockquote cite a:visited { color: #555; }
+
+
 /* Columns */
 div.column_last { margin-right: 0 !important; }
 div.full { margin-bottom: 25px; }
+
+
 div.one_half, div.one_third, div.two_third, 
 div.three_fourth, div.one_fourth, div.two_thirds {
 	float: left;
@@ -2115,10 +2069,39 @@ table {
 		
 
 /*--------------------------------------------
-22. Homepage Views
+22. Homepage Middle views
 ---------------------------------------------*/
+.view-id-obg_news .views-row, .view-id-obg_dogs .views-row {
+	clear: none;
+	float: left;
+	margin-right: 0;
+	width: auto;
+}
 
-#block-views-events-calendar-block-3 ul{
+.view-id-obg_news ul,.view-id-obg_dogs ul { list-style: none }
+
+	.view-id-obg_news ul li, .view-id-obg_dogs ul li {
+		margin-bottom: 15px;
+		padding-bottom: 15px;
+		border-bottom: 1px solid #e1e1e1;
+	}
+	
+.view-id-obg_news ul li:last-child, .view-id-obg_dogs ul li:last-child{
+		/*border-bottom: none;*/
+		border-bottom: 1px solid #E1E1E1;
+	}
+	
+.view-id-obg_news ul span, .view-id-obg_dogs ul span {
+    	float:left;
+    	padding-right: 10px;
+    }
+    
+    
+.view-id-obg_news p, .view-id-obg_dogs p {
+ 	margin-left: 80px;
+}
+
+.view-id-events_calendar ul{
   list-style: none;
   padding-left: 0px;
 }
@@ -2138,8 +2121,6 @@ table {
 #block-views-events-calendar-block-3  .views-field-title a:hover {
   text-decoration: underline;
 }
-
-
 
 #block-views-events-calendar-block-3 ul li .date {
     width: 40px;
@@ -2235,13 +2216,9 @@ table {
   float:left;
 } 
 
-/* Frontpage news view */
-.view-id-obg_news .views-row {
-	clear: none;
-	float: left;
-	margin-right: 0;
-	width: auto;
-}
 
+/* Home Items left and right */
+
+      
 
 
