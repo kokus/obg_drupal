@@ -7,3 +7,4 @@ sites/*/private
 
 # remove .DS_Store
 .DS_Store
+.project
