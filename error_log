@@ -1,0 +1,4 @@
+[08-Sep-2013 00:04:14 America/New_York] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home1/vgmediag/public_html/cockerspanish/includes/database/query.inc on line 1806
+[08-Sep-2013 01:01:44 America/New_York] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home1/vgmediag/public_html/cockerspanish/includes/common.inc on line 7079
+[08-Sep-2013 10:04:50 America/New_York] PHP Fatal error:  [] operator not supported for strings in /home1/vgmediag/public_html/cockerspanish/includes/form.inc on line 3748
+[08-Sep-2013 10:07:46 America/New_York] PHP Fatal error:  [] operator not supported for strings in /home1/vgmediag/public_html/cockerspanish/includes/form.inc on line 3748

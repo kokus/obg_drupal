@@ -79,12 +79,26 @@ function obgbasic_preprocess_page(&$vars) {
 }
 
 /**
+ * Implements hook_form_search_form_alter().
+ */
+function obgbasic_form_alter(&$form, &$form_state, $form_id) {
+	 if ($form_id == 'search_block_form') {
+			$form['actions']['submit']['#value'] = t('SEARCH');
+			$form['actions']['submit']['#attributes'] = array('class' => array('button white'));
+	 }
+	
+  //$form['actions']['submit']['#attributes']['class'][] = 'button white';
+}
+
+
+
+/**
  * Implements hook_preprocess_block()
  *
  * Override or insert variables into the block templates.
  */
 
-function obgbasic_preprocess_block(&$vars) {
+/*function obgbasic_preprocess_block(&$vars) {
   //classes describing the position of the block within the region
   if($vars['block_id'] == 1) {
     $vars['classes_array'][] = 'first';
@@ -92,7 +106,7 @@ function obgbasic_preprocess_block(&$vars) {
 
   //Add class 'block-title' to blocks
   $vars['title_attributes_array']['class'][] = 'block-title';
-}
+}*/
 
 
 

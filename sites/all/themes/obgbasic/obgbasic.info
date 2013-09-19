@@ -7,28 +7,18 @@ engine = phptemplate
 
 stylesheets[all][] = styles/html-reset.css
 stylesheets[all][] = styles/base.css
-;stylesheets[all][] = styles/global.css
-stylesheets[all][] = styles/media.queries.css
-
-;stylesheets[all][] = styles/reset.css
-;stylesheets[all][] = styles/global.css
+;stylesheets[all][] = styles/media.queries.new.css
+;stylesheets[(min-width: 479px)][] = styles/mobile.css
 
 
-;For iPads and Tablets
-;stylesheets[screen and (min-width: 751px) and (max-width: 970px)][] = styles/tablet.css
-
-;For iPhones and Mobile
-;stylesheets[screen and (max-width: 750px)][] = styles/mobile.css
 
 
-;stylesheets[all][] = styles/base.css
-;stylesheets[all][] = styles/obg.css
-;stylesheets[all][] = styles/media.queries.css
+
 
 ; Regions
 ; -------------------------
 regions[header] = Header
-regions[highlighted] = Highlighted
+regions[slideshow] = Slideshow
 regions[help] = Help
 regions[content] = Content
 regions[home_content_left] = Home content left

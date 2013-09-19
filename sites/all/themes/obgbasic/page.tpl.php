@@ -1,8 +1,8 @@
 
 
   <header>
-    <div class="container"> 
-     <!-- Start Main Menu -->  
+    <div class="container">
+     <!-- Start Main Menu -->
       <nav>
         <?php print render($page['header']); ?>
       </nav>
@@ -18,45 +18,48 @@
       </aside>
     <!-- End Social Icons -->
 
-    </div>    
+    </div>
   </header>
-  
+
   <section class="page_heading">
     <div class="logo container">
-      <a href="">Advocate</a>     
-      <span class="tagline">Oldies But Goodies Cocker Rescue</span>
+       <?php if ($logo): ?>
+      	<a href="<?php print $front_page; ?>" title="<?php print $site_name; ?>"><img src="<?php print $logo; ?>"/></a>
+     	 <?php endif; ?>
+
+      <span class="tagline"><?php print $site_name; ?></span>
     </div>
   </section>
-  
+
   <div class="page_wrapper">
     <section class="container">
-      
+
       <!-- Start Page Content -->
       <div id="about" class="page with_sidebar">
 
         <?php print $messages; ?>
-  
+
         <div id="content" class="column">
           <div class="section">
 
             <div class="breadcrumb"><?php print $breadcrumb . $title; ?></div>
-
-            <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
-            <a id="main-content"></a>
             <?php print render($title_prefix); ?>
             <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
             <?php print render($title_suffix); ?>
-            <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
+            <?php print render($tabs); ?>
             <?php print render($page['help']); ?>
             <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
+
+            <?php print render($page['slideshow']); ?>
+
             <?php print render($page['content']); ?>
             <?php print $feed_icons; ?>
           </div>
-        </div> <!-- /.section, /#content -->   
+        </div> <!-- /.section, /#content -->
 
       </div>
       <!-- End Page Content -->
-      
+
       <!-- Start Sidebar -->
       <aside>
         <div id="sidebar">
@@ -72,20 +75,20 @@
               <?php print render($page['sidebar_second']); ?>
             </div></div> <!-- /.section, /#sidebar-second -->
           <?php endif; ?>
-            
+
         </div>
       </aside>
-      <!-- End Sidebar --> 
-      
+      <!-- End Sidebar -->
+
     </section>
   </div>
-  
+
   <footer>
 
     <div class="container">
 
       <?php if ($page['footer_first'] || $page['footer_second'] || $page['footer_third'] || $page['footer_fourth']) :?>
- 
+
 
             <div class="first one_fourth footer-area">
             <?php if ($page['footer_first']) :?>
@@ -102,18 +105,18 @@
             <div class="one_fourth footer-area">
             <?php if ($page['footer_third']) :?>
             <?php print render($page['footer_third']); ?>
-            <?php endif; ?> 
+            <?php endif; ?>
             </div>
 
             <div class="one_fourth footer-area column_last">
             <?php if ($page['footer_fourth']) :?>
             <?php print render($page['footer_fourth']); ?>
-            <?php endif; ?> 
+            <?php endif; ?>
             </div>
 
 
       <?php endif; ?>
-      
+
       <?php print render($page['footer']); ?>
 
       <div class="copy">

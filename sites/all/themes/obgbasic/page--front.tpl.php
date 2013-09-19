@@ -75,8 +75,8 @@
 
 
   <header>
-    <div class="container"> 
-     <!-- Start Main Menu -->  
+    <div class="container">
+     <!-- Start Main Menu -->
       <nav>
         <?php print render($page['header']); ?>
       </nav>
@@ -92,44 +92,48 @@
       </aside>
     <!-- End Social Icons -->
 
-    </div>    
+    </div>
   </header>
-  
-  <section class="page_heading home">
+
+  <section class="page_heading">
     <div class="logo container">
-     
-      <span class="tagline">Oldies But Goodies Cocker Rescue</span>
+       <?php if ($logo): ?>
+      	<a href="<?php print $front_page; ?>" title="<?php print $site_name; ?>"><img src="<?php print $logo; ?>"/></a>
+     	 <?php endif; ?>
+
+      <span class="tagline"><?php print $site_name; ?></span>
     </div>
   </section>
-  
+
   <div class="page_wrapper">
     <section class="container">
-      
+
       <!-- Start Page Content -->
       <div id="home" class="page">
 
         <?php print $messages; ?>
-  
+
         <div id="content" class="column">
           <div class="section">
-            <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
-            <a id="main-content"></a>
             <?php print render($title_prefix); ?>
             <?php if ($title): ?><h1 class="title" id="page-title"><?php print $title; ?></h1><?php endif; ?>
             <?php print render($title_suffix); ?>
-            <?php if ($tabs): ?><div class="tabs"><?php print render($tabs); ?></div><?php endif; ?>
+            <?php print render($tabs); ?>
             <?php print render($page['help']); ?>
             <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
-            
-            <div class="sub_heading">
+
+
+            <?php print render($page['slideshow']); ?>
+
+           <div class="sub_heading">
               <h2>Helping Cockers, Young and Old</h2>
               <span class="line"></span>
-            </div>
+            </div> 
 
             <div class="full" id="revolution_wrap">
-             
-              <?php print render($page['content']); ?>   
-       
+
+              <?php print render($page['content']); ?>
+
               <div id="actions">
                <div class="box one_half">
                  <div class="inner">
@@ -161,15 +165,17 @@
                </div>
                <div class="box one_half column_last">
                  <div class="inner">
-                   
+
                     <div class="box_heading">
                       <span class="icon general-enclosed">2</span>
                       <h4><a href="shop">Shop</a></h4>
                     </div>
-                    <p>Use <a href="shop_online_obg.php">our links</a> when shopping online - we get credit!  And <a href="shop_cause.php">shop for a cause</a>, by purchasing items for which OBG gets a donation!.</p>
+                    <p>Use <a href="shop/shop-for-a-cause">our links</a> when shopping online - we get credit!  And <a href="shop/shop-for-a-cause">shop for a cause</a>, by purchasing items for which OBG gets a donation!.</p>
                   </div>
                </div>
               </div>
+
+
             </div>
 
             <?php //print $feed_icons; ?>
@@ -183,7 +189,7 @@
               <a class="donate_button" href="donate">Donate Now!</a>
             </div>
 
-            <div id="home_items">
+            <div id="items">
               <?php if ($page['home_content_left']): ?>
                 <div id="home-content-left" class="one_third">
                   <?php print render($page['home_content_left']); ?>
@@ -204,20 +210,20 @@
 
 
           </div>
-        </div> <!-- /.section, /#content -->   
+        </div> <!-- /.section, /#content -->
 
       </div>
       <!-- End Page Content -->
-      
+
     </section>
   </div>
-  
+
   <footer>
 
     <div class="container">
 
       <?php if ($page['footer_first'] || $page['footer_second'] || $page['footer_third'] || $page['footer_fourth']) :?>
-       
+
 
             <div class="first one_fourth footer-area">
             <?php if ($page['footer_first']) :?>
@@ -234,18 +240,18 @@
             <div class="one_fourth footer-area">
             <?php if ($page['footer_third']) :?>
             <?php print render($page['footer_third']); ?>
-            <?php endif; ?> 
+            <?php endif; ?>
             </div>
 
             <div class="one_fourth footer-area column_last">
             <?php if ($page['footer_fourth']) :?>
             <?php print render($page['footer_fourth']); ?>
-            <?php endif; ?> 
+            <?php endif; ?>
             </div>
 
-   
+
       <?php endif; ?>
-      
+
       <?php print render($page['footer']); ?>
 
       <div class="copy">
