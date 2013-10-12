@@ -129,6 +129,15 @@ function rescuegroups_schema() {
         'sqlsrv_type' => 'smalldatetime',
         'not null' => FALSE,
       ),
+       'animal_kill_date' => array(
+        'description' => 'Stores animal euthanasia date if available.',
+        'type' => 'date',
+        'mysql_type' => 'date',
+        'pgsql_type' => 'timestamp without time zone',
+        'sqlite_type' => 'varchar',
+        'sqlsrv_type' => 'smalldatetime',
+        'not null' => FALSE,
+      ),
       'animal_last_update' => array(
         'description' => 'Stores last animal update date and time.',
         'type' => 'datetime',
@@ -154,6 +163,11 @@ function rescuegroups_schema() {
         'not null' => TRUE,
       ),
       'animal_id' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+       'animal_media_id' => array(
         'type' => 'int',
         'not null' => TRUE,
         'default' => 0,

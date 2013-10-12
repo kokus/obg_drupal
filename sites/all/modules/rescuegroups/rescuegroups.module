@@ -38,11 +38,13 @@ function rescuegroups_menu() {
 
 function _test_stuff() { 
     //$animals = _rescuegroups_pull_animals();
-   $events = _rescuegroups_pull_events();
-    dsm('record:');
+    $result_image = db_query("SELECT 1 FROM rescuegroups_animal_image where animal_media_id = '26'");
+   //$events = _rescuegroups_pull_events();
+    //dsm('record:');
     //dsm();
     print_r('<pre>');
-    print_r($events);
+    print_r($result_image->rowCount());
+    print_r('<pre>');
 
     $content = array(
     'content' => array(
@@ -215,6 +217,7 @@ function get_animal_query($credentials,$limit,$lastupdate) {
                   "fosterEmail",
                   "animalHighlightOrder",
                   "animalAdoptedDate",
+                  "animalKillDate",
                   "animalUpdatedDate"
                 ),
       ),
@@ -316,6 +319,7 @@ function insert_animal($row) {
         'foster_email' => $row['fosterEmail'],
         'animal_highlight_order' => $row['animalHighlightOrder'],
         'animal_adopted_date' => (empty($row['animalAdoptedDate'])) ? null : date('Y-m-d', strtotime($row['animalAdoptedDate'])),
+        'animal_kill_date' => (empty($row['animalKillDate'])) ? null : date('Y-m-d', strtotime($row['animalKillDate'])),
         'animal_last_update' => date('Y-m-d H:i', strtotime($row['animalUpdatedDate']))
       ))
       ->execute();
@@ -352,10 +356,28 @@ function update_animal($row,$animalID) {
         'foster_email' => $row['fosterEmail'],
         'animal_highlight_order' => $row['animalHighlightOrder'],
         'animal_adopted_date' => (empty($row['animalAdoptedDate'])) ? null : date('Y-m-d', strtotime($row['animalAdoptedDate'])),
+        'animal_kill_date' => (empty($row['animalKillDate'])) ? null : date('Y-m-d', strtotime($row['animalKillDate'])),
         'animal_last_update' => date('Y-m-d H:i', strtotime($row['animalUpdatedDate']))
       ))
       ->condition('animal_id', $animalID, '=')
       ->execute();
+      //Insert or Update Images
+      if(count($row['animalPictures']) > 0) {
+        foreach ($row['animalPictures'] as $imagerow) {
+          //check if animal image exist
+          $result_image= db_query("SELECT 1 FROM rescuegroups_animal_image where animal_media_id = '".$imagerow['mediaID']."'");
+          if($result_image->rowCount() == 0) { 
+            db_insert('rescuegroups_animal_image')
+            ->fields(array(
+              'animal_id' => $row['animalID'],
+              'animal_media_id' => $imagerow['mediaID'],
+              'animal_url_image_full' => $imagerow['urlSecureFullsize']
+            ))
+            ->execute();
+          } 
+        }
+      }
+
 }
 
 function insert_event($row) {
