@@ -85,8 +85,9 @@
       <!-- Start Social Icons  -->
       <aside>
         <ul class="social icon">
-          <li><a href="https://twitter.com/OBGcockerrescue" title="Twitter">a</a></li>
           <li><a href="https://www.facebook.com/OBGcockerrescue" title="Facebook">v</a></li>
+          <li><a href="http://obgcockerconnection.blogspot.com" title="Blogger">j</a></li>
+          <li><a href="https://twitter.com/OBGcockerrescue" title="Twitter">a</a></li>
           <li><a href="http://pinterest.com/source/cockerspanielrescue.com/" title="Pinterest">p</a></li>
         </ul>
       </aside>
@@ -141,7 +142,7 @@
                       <span class="icon general-enclosed">b</span>
                       <h4><a href="adopt">Adopt</a></h4>
                     </div>
-                    <p>Save a life, adopt!  Check out all our <a href="adopt_dogs.php">adoptable dogs</a> and learn more about adopting through OBG.</p>
+                    <p>Save a life, adopt!  Check out all our <a href="/adopt/dogs-available">adoptable dogs</a> and learn more about adopting through OBG.</p>
                  </div>
                </div>
                <div class="box one_half column_last">
@@ -168,7 +169,7 @@
 
                     <div class="box_heading">
                       <span class="icon general-enclosed">2</span>
-                      <h4><a href="shop">Shop</a></h4>
+                      <h4><a href="/shop/help-obg-online">Shop</a></h4>
                     </div>
                     <p>Use <a href="shop/shop-for-a-cause">our links</a> when shopping online - we get credit!  And <a href="shop/shop-for-a-cause">shop for a cause</a>, by purchasing items for which OBG gets a donation!.</p>
                   </div>

@@ -6,13 +6,10 @@ core = 7.x
 engine = phptemplate
 
 stylesheets[all][] = styles/html-reset.css
+stylesheets[all][] = styles/3d-corner-ribbons.css
 stylesheets[all][] = styles/base.css
 ;stylesheets[all][] = styles/media.queries.new.css
 ;stylesheets[(min-width: 479px)][] = styles/mobile.css
-
-
-
-
 
 
 ; Regions
@@ -34,9 +31,7 @@ regions[footer_fourth] = Footer Fourth
 
 regions[footer] = Footer
 
-
-
-
 scripts[] = scripts/advocate.js
 scripts[] = scripts/jquery.tipsy.js
 scripts[] = scripts/jquery.twitter.js
+scripts[] = scripts/html5shiv.js
