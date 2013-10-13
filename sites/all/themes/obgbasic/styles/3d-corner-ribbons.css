@@ -327,9 +327,7 @@
 	background-color: #444444;
 }
 
-
 /*Available*/
-
 .ribbon-hide {
 	display:none;
 }
@@ -343,8 +341,6 @@
 .no-css-transforms .ribbon-Available .text {
 	background-color: #ffd95e;
 }
-
-
 
 /*Pending*/
 .ribbon-Pending .banner::after,
@@ -379,4 +375,21 @@
 	background-color: #99001A;
 }
 
+/*Passed Away or Euthanized*/
 
+.ribbon-Passed .banner::after,
+.ribbon-Passed .banner::before,
+.ribbon-Euthanized .banner::after,
+.ribbon-Euthanized .banner::before {
+	background-color:#660044;
+}
+.ribbon-Passed .text::before,
+.ribbon-Passed .text::after,
+.ribbon-Euthanized .text::before,
+.ribbon-Euthanized .text::after,
+.no-css-transforms .ribbon-Passed .text, 
+.no-css-transforms .ribbon-Euthanized .text {
+	background-color: #660044;
+}
+
+ribbon-Euthanized
