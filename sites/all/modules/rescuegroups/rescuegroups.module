@@ -199,6 +199,7 @@ function get_animal_query($credentials,$limit,$lastupdate) {
        ),
        "fields" => array(
                   "animalId",
+                  "animalRescueID",
                   "animalStatus",
                   "animalName",
                   "animalSex",
@@ -302,6 +303,7 @@ function insert_animal($row) {
     db_insert('rescuegroups_animal')
       ->fields(array(
         'animal_id' => $row['animalID'],
+        'animal_rescue_id' => $row['animalRescueID'],
         'animal_status' => $row['animalStatus'],
         'animal_name' => $row['animalName'],
         'animal_sex' => $row['animalSex'],
@@ -339,6 +341,7 @@ function insert_animal($row) {
 function update_animal($row,$animalID) {
     db_update('rescuegroups_animal') // Table name no longer needs {}
       ->fields(array(
+        'animal_rescue_id' => $row['animalRescueID'],
         'animal_status' => $row['animalStatus'],
         'animal_name' => $row['animalName'],
         'animal_sex' => $row['animalSex'],

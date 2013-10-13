@@ -12,6 +12,13 @@ function rescuegroups_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
+      'animal_obg_id' => array(
+        'description' => 'Stores internal obg dog id.',
+        'type' => 'varchar',
+        'length' => 10,
+        'not null' => TRUE,
+        'default' => '',
+      ),
       'animal_status' => array(
       	 'description' => 'Stores animal status from rescuegroups.',
          'type' => 'varchar',
