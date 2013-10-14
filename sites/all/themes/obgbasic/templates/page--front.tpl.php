@@ -161,7 +161,7 @@
                       <h4><a href="donate">Donate</a></h4>
                     </div>
                     <p>Every little bit counts!  Feel confident knowing that your donation will go directly to the dogs.</p>
-                    <p style="text-align:center;"><b>CFC#&nbsp;27768&nbsp;&nbsp;|&nbsp;&nbsp;MCC#&nbsp;8951</b></p>
+                    <p style="text-align:center;"><b>CFC#&nbsp;27768&nbsp;&nbsp;|&nbsp;&nbsp;CVC#&nbsp;3283</b></p>
                   </div>
                </div>
                <div class="box one_half column_last">
@@ -169,9 +169,9 @@
 
                     <div class="box_heading">
                       <span class="icon general-enclosed">2</span>
-                      <h4><a href="/shop/help-obg-online">Shop</a></h4>
+                      <h4><a href="/shop">Shop</a></h4>
                     </div>
-                    <p>Use <a href="shop/shop-for-a-cause">our links</a> when shopping online - we get credit!  And <a href="shop/shop-for-a-cause">shop for a cause</a>, by purchasing items for which OBG gets a donation!.</p>
+                    <p>Use <a href="shop/help-obg-online">our links</a> when shopping online - we get credit!  And <a href="shop/shop-for-a-cause">shop for a cause</a>, by purchasing items for which OBG gets a donation!.</p>
                   </div>
                </div>
               </div>
