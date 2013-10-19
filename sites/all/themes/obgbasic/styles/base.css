@@ -1188,7 +1188,7 @@ div.three_fourth, div.one_fourth, div.two_thirds {
 }
 div.one_half    { width: 48%; }
 div.one_third   { width: 30.42%; }
-div.two_thirds  { width: 65%; }
+div.two_third  { width: 65%; }
 div.one_fourth  { width: 22%; } /* 30%*/
 div.full h1 { margin-bottom: 0px; }
 div.full h2,div.full h3 {
@@ -1975,27 +1975,9 @@ div.side-corner-tag h6:after {
 ---------------------------------------------*/
 
 table {
-    opacity: 0.6; /* Real browsers */
-	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
-    filter: alpha(opacity = 60);  /* MSIE */
-    border-collapse: collapse;
-    width: 100%;
+	border-top: none;
 }
 
-	/* Zebra striping */
-	tr:nth-of-type(odd) {
-		background: #eee;
-	}
-	th {
-		background: #333;
-		color: white;
-		font-weight: bold;
-	}
-	td, th {
-		padding: 6px;
-		border: 1px solid #ccc;
-		text-align: left;
-	}
 
 
 /*--------------------------------------------
