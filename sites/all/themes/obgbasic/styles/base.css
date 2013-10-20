@@ -2095,29 +2095,6 @@ table {
 }
 
 
-/*.view-id-obg_dogs ul { list-style: none }
-
-.view-id-obg_dogs ul li {
-		margin-bottom: 15px;
-		padding-bottom: 15px;
-		border-bottom: 1px solid #e1e1e1;
-	}
-
-.view-id-obg_dogs ul li:last-child{
-
-		border-bottom: 1px solid #E1E1E1;
-	}
-
-.view-id-obg_dogs ul span {
-    	float:left;
-    	padding-right: 10px;
-    }
-
-.view-id-obg_dogs p {
- 	margin-left: 80px;
-}
-*/
-
 .view-id-events_calendar ul{
   list-style: none;
   padding-left: 0px;
@@ -2164,12 +2141,7 @@ table {
 	text-decoration: underline;
 }
 
-/*#block-views-events-calendar-block-4  .views-field-field-event-location {
-	font-size: 13px;
-	line-height: 20px;
-	color: #666666;
-	margin-bottom: 15px;
-}*/
+
 
 #block-views-events-calendar-block-3  .views-field-title a:hover {
   text-decoration: underline;
@@ -2197,8 +2169,6 @@ table {
       font-size: 18px;
       font-weight: bold;
 }
-
-
 
 
 
@@ -2271,7 +2241,13 @@ table {
 }
 
 
+/*--------------------------------------------
+23 Friends of OBG View Drupal		
+---------------------------------------------*/
 
+.view-obg-friends .views-row {
+	margin-bottom: 20px;
+}
 
 
 /* front page slider*/
