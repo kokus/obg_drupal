@@ -1176,6 +1176,7 @@ blockquote {
 }
 
 /* Columns */
+
 div.column_last { margin-right: 0 !important; }
 div.full { margin-bottom: 25px; }
 
@@ -2398,4 +2399,10 @@ footer h5 {
 	font-family: 'Pacifico';
 	color: #006699;
 
+}
+
+footer h5 a {
+		font-size: 24px;
+	font-family: 'Pacifico';
+	color: #006699;
 }
