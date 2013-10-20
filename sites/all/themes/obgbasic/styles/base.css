@@ -917,7 +917,10 @@ div.widget { }
 						color: #aaa;
 						text-decoration: none;
 					}
-	/* Newsletter */
+
+
+   
+	/* 
 	div.widget form p {
 		margin-bottom: 12px;
 	}
@@ -932,7 +935,7 @@ div.widget { }
 		left: 12px !important;
 		font-size: 12px;
 	}
-	/* Location */
+
 	div.location_widget p{
 		margin-bottom: 15px;
 		line-height: 22px;
@@ -941,7 +944,7 @@ div.widget { }
 			font-size: 13px;
 			padding-right: 4px;
 		}
-	/* Categories */
+
 	div.widget div.widget_categories ul {
 		overflow: hidden;
 	}
@@ -971,7 +974,7 @@ div.widget { }
 				div.widget div.widget_categories ul li a:hover span {
 					background: #bbb;
 				}
-	/* Recent Posts */
+	/* Recent Posts 
 	div.widget div.recent_posts ul li {
 		margin-bottom: 5px;
 	}
@@ -988,7 +991,7 @@ div.widget { }
 			font-size: 11px;
 			line-height: 16px;
 		}
-
+/*
 
 
 	/* Side bar Gallery - DRUPAL */
@@ -2381,4 +2384,18 @@ footer h5 a {
 		font-size: 24px;
 	font-family: 'Pacifico';
 	color: #006699;
+}
+
+
+/* News View Page*/
+
+.group-left.views_news_left {
+	width:30%;
+}
+.group-right.views_news_right {
+	width: 70%;
+}
+
+.page-connect-obg-news {
+	margin-bottom: 20px;
 }
