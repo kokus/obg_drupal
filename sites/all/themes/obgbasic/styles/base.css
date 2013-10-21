@@ -1606,6 +1606,7 @@ div.events-list {
 		div.events-list div.list div.event_logo {
 			float: left;
 			padding: 20px 26px 12px 16px;
+			height:142px;
 			}
 		div.events-list div.list div.event_details {
 			float: left;
@@ -1749,7 +1750,65 @@ div#eventdetails div.event_date{
 
 
 /*--------------------------------------------
-17. Dogs Gallery page
+17. Dogs Gallery Attending Event Detail Node- Drupal
+---------------------------------------------*/
+.node-event .field-name-field-event-type {
+padding: 20px 10px 0px 10px;
+background: #f5f5f5;
+
+}
+
+.node-event .field-name-field-date-event {
+padding: 20px 10px 20px 10px;
+background: #f5f5f5;
+margin-bottom:25px;
+}
+
+
+.node-event .field-name-body {
+
+}
+
+.node-event .dog_attending_container {
+margin-bottom:30px;
+}
+
+.node-event .dog_items {
+width:100%;
+margin:10px;
+overflow:hidden;
+}
+.node-event .dog_items .node-dog {
+float:left;
+margin-right: 15px;
+}
+
+.node-event .dog_items .node-dog img{
+max-width: 100%;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+
+.node-event .dog_items .node-dog .field-name-title {
+text-align:center;
+}
+
+.node-venue {
+margin-bottom:20px;
+}
+.node-venue .group-left {
+width:65%;
+}
+
+.node-venue .group-right {
+width:30%;
+padding:5px;
+}
+
+
+/*--------------------------------------------
+17. Dogs Gallery page -non drupal
 ---------------------------------------------*/
 .page .gallery_container {
     width: 100%;
