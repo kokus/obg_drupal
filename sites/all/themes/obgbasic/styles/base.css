@@ -2389,6 +2389,25 @@ footer h5 a {
 
 /* News View Page*/
 
+
+.view.view-obg-news.view-id-obg_news.view-display-id-page .views-row {
+margin-bottom: 19px;
+padding-bottom: 13px;
+}
+.view.view-obg-news.view-id-obg_news.view-display-id-page .views-field-title {
+margin-bottom: 15px;
+}
+
+.view.view-obg-news.view-id-obg_news.view-display-id-page .views-field-field-image {
+float:left;
+margin-right:20px;
+width:100px;
+}
+
+
+
+
+/*
 .group-left.views_news_left {
 	width:30%;
 }
@@ -2402,5 +2421,5 @@ footer h5 a {
 .page-connect-obg-news .views-row {
 	margin-bottom: 20px;
 }
-
+*/
 .g
