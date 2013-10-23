@@ -113,7 +113,7 @@ function _rescuegroups_pull_animals() {
   $credentials = get_rescuegroups_api_credentials();
 
  //Get animal that have last updated field is greater than the most recent last updated in DB
-  $api_query = get_animal_query($credentials,2000,$lastupdate);
+  $api_query = get_animal_query($credentials,3000,$lastupdate);
   $datajson = curl_json($api_query);
   //return $datajson;
   foreach ($datajson as $row) {
@@ -387,6 +387,7 @@ function insert_animal($row) {
           db_insert('rescuegroups_animal_image')
             ->fields(array(
               'animal_id' => $row['animalID'],
+              'animal_media_id' => $imagerow['mediaID'],
               'animal_url_image_full' => $imagerow['urlSecureFullsize']
             ))
             ->execute();
