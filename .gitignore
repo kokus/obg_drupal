@@ -8,3 +8,4 @@ sites/*/private
 # remove .DS_Store
 .DS_Store
 .project
+error_log
