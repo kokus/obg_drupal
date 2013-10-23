@@ -91,6 +91,7 @@ function rescuegroups_admin_form($form, &$form_state) {
 function rescuegroups_cron() {
 
   _rescuegroups_pull_animals();
+  _rescuegroups_pull_locations();
   _rescuegroups_pull_events();
 
 }
@@ -131,6 +132,26 @@ function _rescuegroups_pull_animals() {
   }
 
 }
+
+/**
+ * Imports location data from rescuegroups API into rescuegroups_location custom table
+ */
+function _rescuegroups_pull_locations() {
+  $items = array();
+  //empty locations rescuegroups table
+  db_delete('rescuegroups_location')->execute();
+
+    //get credentials from Rescuegroups API
+  $credentials = get_rescuegroups_api_credentials();
+  $api_query = get_location_query($credentials,200);
+  $data_json = curl_json($api_query);
+
+  foreach ($data_json as $row) {
+      insert_location($row);
+  }
+
+}
+
 
 /**
  * Imports event data from rescuegroups API into rescuegroups_event custom table
@@ -227,6 +248,41 @@ function get_animal_query($credentials,$limit,$lastupdate) {
   return $data;
 }
 
+/**
+* Prepares data array for specific rescue groups API query ( Locations )
+*/
+function get_location_query($credentials,$limit) {
+  $data = array(
+    "token" => $credentials['token'],
+    "tokenHash" => $credentials['tokenHash'],
+    "objectType" => "locations",
+    "objectAction" => "search",
+    "search" => array (
+        "resultStart" => 0,
+        "resultLimit" => $limit,
+        "resultSort" => "locationID",
+        "resultOrder" => "asc",
+        "calcFoundRows" => "Yes", 
+        "filters" => array(
+            array(
+                "fieldName" => "locationID",
+                "operation" => "notequal",
+                "criteria" => "",
+            ),
+        ),
+        "fields" => array("locationID",
+                        "locationName",
+                        "locationCity",
+                        "locationAddress",
+                        "locationCity",
+                        "locationState",
+                        "locationPostalcode",
+                        "locationPhone",
+                        "locationUrl"),
+        ),
+  );
+  return $data;
+}
 
 /**
 * Prepares data array for specific rescue groups API query ( Events )
@@ -381,6 +437,22 @@ function update_animal($row,$animalID) {
         }
       }
 
+}
+
+function insert_location($row) {
+    db_insert('rescuegroups_location')
+      ->fields(array(
+        'location_id' => $row['locationID'],
+        'location_name' => $row['locationName'],
+        'location_address' => $row['locationAddress'],
+        'location_city' => $row['locationCity'],
+        'location_state' => $row['locationState'],
+        'location_country' => 'US',
+        'location_postal_code' => $row['locationPostalcode'],
+        'location_phone' => $row['locationPhone'],
+        'location_url' => $row['locationUrl'],
+      ))
+      ->execute();
 }
 
 function insert_event($row) {
