@@ -9,3 +9,6 @@ sites/*/private
 .DS_Store
 .project
 error_log
+
+# remove htaccess
+!.htaccess
