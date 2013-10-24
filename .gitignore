@@ -1,4 +1,4 @@
-# Ignore configuration files that may contain sensitive information.
+≈# Ignore configuration files that may contain sensitive information.
 sites/*/settings*.php
 
 # Ignore paths that contain user-generated content.
@@ -8,3 +8,7 @@ sites/*/private
 # remove .DS_Store
 .DS_Store
 .project
+error_log
+
+# remove htaccess
+!.htaccess
