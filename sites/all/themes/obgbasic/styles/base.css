@@ -1612,7 +1612,7 @@ div.events-list {
 			float: left;
 			width: 48%;
 			margin-bottom: 12px;
-			margin-left: 3px;
+			margin-left: 0px;
 		}
 			div.events-list div.list div.event_details h5 {
 				font-weight: bold;
@@ -1653,6 +1653,12 @@ div.events-list {
 			div.events-list div.list div.event_date li {
 				margin-bottom: 10px;
 			}
+			div.events-list div.list div.views-field-field-dog-attendance {
+				margin-left: 0;
+				float:left;
+			}
+
+
 /*--------------------------------------------
 16. Event Description
 ---------------------------------------------*/
