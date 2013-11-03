@@ -388,7 +388,8 @@ function insert_animal($row) {
             ->fields(array(
               'animal_id' => $row['animalID'],
               'animal_media_id' => $imagerow['mediaID'],
-              'animal_url_image_full' => $imagerow['urlSecureFullsize']
+              'animal_url_image_full' => $imagerow['urlSecureFullsize'],
+              'animal_media_order' => $imagerow['mediaOrder']
             ))
             ->execute();
         }
@@ -423,18 +424,20 @@ function update_animal($row,$animalID) {
       ->execute();
       //Insert or Update Images
       if(count($row['animalPictures']) > 0) {
+        //remove all dog images 
+        db_delete('rescuegroups_animal_image')->condition('animal_id', $animalID)->execute();
+        //insert only new images with 1 to 6
         foreach ($row['animalPictures'] as $imagerow) {
-          //check if animal image exist
-          $result_image= db_query("SELECT 1 FROM rescuegroups_animal_image where animal_media_id = '".$imagerow['mediaID']."'");
-          if($result_image->rowCount() == 0) { 
+          if ($imagerow["mediaOrder"] < 7) {
             db_insert('rescuegroups_animal_image')
             ->fields(array(
               'animal_id' => $row['animalID'],
               'animal_media_id' => $imagerow['mediaID'],
-              'animal_url_image_full' => $imagerow['urlSecureFullsize']
+              'animal_url_image_full' => $imagerow['urlSecureFullsize'],
+              'animal_media_order' => $imagerow['mediaOrder']
             ))
             ->execute();
-          } 
+          }
         }
       }
 
