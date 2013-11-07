@@ -484,7 +484,8 @@ div#blog div.post {
 
 	#search-block-form input.form-text {
 		float:left;
-		width:55%;
+		width:65%;
+		height:22px;
 	}
 
 	#search-block-form input.form-submit {
