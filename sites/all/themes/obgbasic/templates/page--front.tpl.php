@@ -171,7 +171,7 @@
                       <span class="icon general-enclosed">2</span>
                       <h4><a href="/shop">Shop</a></h4>
                     </div>
-                    <p>Use <a href="shop/help-obg-online">our links</a> when shopping online - we get credit!  And <a href="shop/shop-for-a-cause">shop for a cause</a>, by purchasing items for which OBG gets a donation!.</p>
+                    <p>Use <a href="shop/help-obg-online">our links</a> for <a href="http://www.amazon.com/exec/obidos/redirect-home/oldiesbutgoodi0a">Amazon</a> or <a href="http://www.igive.com/welcome/lp7/cr44b.cfm">iGive</a> for shopping - we get $$$!  And <a href="shop/shop-for-a-cause">shop for a cause</a>, by purchasing items for which OBG gets a donation!.</p>
                   </div>
                </div>
               </div>
