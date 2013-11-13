@@ -88,7 +88,7 @@
           <li><a href="https://www.facebook.com/OBGcockerrescue" title="Facebook">v</a></li>
           <li><a href="http://obgcockerconnection.blogspot.com" title="Blogger">j</a></li>
           <li><a href="https://twitter.com/OBGcockerrescue" title="Twitter">a</a></li>
-          <li><a href="http://pinterest.com/source/cockerspanielrescue.com/" title="Pinterest">p</a></li>
+          <li><a href="http://www.pinterest.com/obgrescue" title="Pinterest">p</a></li>
         </ul>
       </aside>
     <!-- End Social Icons -->
