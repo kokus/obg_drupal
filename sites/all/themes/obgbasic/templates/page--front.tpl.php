@@ -103,7 +103,12 @@
      	 <?php endif; ?>
 
       <span class="tagline"><?php print $site_name; ?></span>
+
+      <span class="heading_banner">
+        <img src="<?php echo drupal_get_path('theme', 'obgbasic'); ?>/images/dcskyline.png">
+      </span>
     </div>
+
   </section>
 
   <div class="page_wrapper">
