@@ -88,7 +88,7 @@
           <li><a href="https://www.facebook.com/OBGcockerrescue" title="Facebook">v</a></li>
           <li><a href="http://obgcockerconnection.blogspot.com" title="Blogger">j</a></li>
           <li><a href="https://twitter.com/OBGcockerrescue" title="Twitter">a</a></li>
-          <li><a href="http://www.pinterest.com/obgrescue" title="Pinterest">p</a></li>
+          <li><a href="http://pinterest.com/source/cockerspanielrescue.com/" title="Pinterest">p</a></li>
         </ul>
       </aside>
     <!-- End Social Icons -->
@@ -190,7 +190,7 @@
               <span class="icon general">l</span>
               <div class="text">
                 <h3>Donate what you can to help</h3>
-                <span class="color">Your tax-free donation provides medical care and temporary boarding for 300 dogs per year.</span>
+                <span class="color">Your tax deductible donation provides medical care and temporary boarding for 200 dogs per year.</span>
               </div>
               <a class="donate_button" href="donate">Donate Now!</a>
             </div>
