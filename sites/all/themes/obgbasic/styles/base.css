@@ -55,7 +55,45 @@ body ul {
 	width: 1000px;
 	margin: 0 auto;
 }
-.container .page {
+
+section.page_heading .container {
+	position:relative;
+}
+
+section.page_heading {
+	background: #006699;
+	width: 100%;
+	height:90px;
+
+}
+	section.page_heading .logo {
+		float: left;
+		width:8%;
+		overflow: hidden;
+	}
+	section.page_heading .tagline {
+		float:left;
+		width:40%;
+		font-family: 'Pacifico';
+		font-size: 28px;
+		color: #fff;
+		display: inline-block;
+		margin-top: 10px;
+		padding-top: 10px;
+		padding-left: 15px;
+	}
+	section.page_heading .heading_banner {
+		position:absolute;
+		width:364px;
+		height:102px;
+		top:-12px;
+		left:63%;
+		bottom:50%
+
+	}
+
+
+ .container .page {
 		border: 1px solid #c8c9c9;
 		-webkit-border-radius: 4px;
 		-moz-border-radius: 4px;
@@ -66,46 +104,7 @@ body ul {
 		background: #fff;
 		padding: 20px;
 		overflow: hidden;
-	}
-
-
-section.page_heading {
-	background: #006699;
-	width: 100%;
-	height: 90px;
 }
-
-
-	section.page_heading.home {
-		position: absolute;
-		top: 65px;
-		height: 360px;
-	}
-
-
-	section.page_heading .logo {
-		padding-top: 8px;
-		overflow: hidden;
-	}
-
-	section.page_heading .logo a {
-		background: url("../images/OBG_LOGO_Small.png") no-repeat scroll center center transparent;
-		text-decoration: none;
-		height: 72px;
-	  width: 72px;
-	  float: left;
-	  margin-right: 25px;
-	}
-
-
-	section.page_heading .logo .tagline {
-			font-family: 'Pacifico';
-			font-size: 28px;
-			color: #fff;
-			display: inline-block;
-			margin-top: 0px;
-			padding-top: 10px;
-		}
 
 
 
