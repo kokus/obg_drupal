@@ -23,12 +23,16 @@
   </header>
 
   <section class="page_heading">
-    <div class="logo container">
-       <?php if ($logo): ?>
-      	<a href="<?php print $front_page; ?>" title="<?php print $site_name; ?>"><img src="<?php print $logo; ?>"/></a>
-     	 <?php endif; ?>
-
-      <span class="tagline"><?php print $site_name; ?></span>
+    <div class="container">
+      <div class="logo">
+         <?php if ($logo): ?>
+          <a href="<?php print $front_page; ?>" title="<?php print $site_name; ?>"><img src="<?php print $logo; ?>"/></a>
+         <?php endif; ?>
+      </div>
+      <div class="tagline"><?php print $site_name; ?></div>
+      <div class="heading_banner">
+            <img src="<?php echo drupal_get_path('theme', 'obgbasic'); ?>/images/dcskyline.png">
+      </div>
     </div>
   </section>
 
