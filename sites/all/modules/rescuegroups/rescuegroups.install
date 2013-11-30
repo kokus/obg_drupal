@@ -101,7 +101,20 @@ function rescuegroups_schema() {
         'not null' => FALSE,
         'default' => '',
       ),
-       'foster_firstname' => array(
+      'animal_sponsorable' => array(
+        'description' => 'Stores yes or no for animals sponsorable.',
+        'type' => 'varchar',
+        'length' => 3,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'animal_sponsorship_details' => array(
+        'description' => 'Stores dogs sponsorship details.',
+        'type' => 'text',
+        'size' => 'big',
+        'not null' => FALSE,
+      ),
+      'foster_firstname' => array(
         'description' => 'Stores Dogs Foster first name.',
         'type' => 'varchar',
         'length' => 255,
