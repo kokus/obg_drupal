@@ -2448,7 +2448,9 @@ table {
 }
 
 
-.views-fluid-grid-list .views-field-field-gift-image img{
+.views-fluid-grid-list .views-field-field-gift-image img,
+.views-fluid-grid-list .views-field-field-gift-image1 img
+{
 	position: absolute;
     top:15px;
     left:-15px;
