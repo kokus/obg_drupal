@@ -2083,6 +2083,13 @@ table {
 		font-size: 20px;
 	}
 
+	.ds-2col-stacked-fluid > .group-left .social-share .share-label {
+		font-weight: bold;
+		font-size: 13px;
+		line-height: 20px;
+		color: #666666;
+	}
+
 
 	.ds-2col-stacked-fluid > .group-right {
 		width:35%;
