@@ -2077,8 +2077,10 @@ table {
 	}
 
 	.ds-2col-stacked-fluid > .group-left .field-name-dog-sponsor-field h4 {
-		color:#006699;
+		color:#99001A;
 		margin-bottom: 10px;
+		font-family: 'Pacifico';
+		font-size: 20px;
 	}
 
 
