@@ -2072,6 +2072,15 @@ table {
 
 	}
 
+	.ds-2col-stacked-fluid > .group-left .field-header-dog-sponsor-field {
+		margin-top: 20px;
+	}
+
+	.ds-2col-stacked-fluid > .group-left .field-name-dog-sponsor-field h4 {
+		color:#006699;
+		margin-bottom: 10px;
+	}
+
 
 	.ds-2col-stacked-fluid > .group-right {
 		width:35%;
