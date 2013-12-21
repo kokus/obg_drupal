@@ -70,6 +70,7 @@ section.page_heading {
 		float: left;
 		width:8%;
 		overflow: hidden;
+		padding-top: 10px;
 	}
 	section.page_heading .tagline {
 		float:left;
