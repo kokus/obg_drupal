@@ -2437,7 +2437,10 @@ table {
 
 
 
-/* Dog Views */
+
+/*--------------------------------------------
+24 Dog Views		
+---------------------------------------------*/
 
 .views-fluid-grid-list .views-fluid-grid-item {
 	position:relative;
@@ -2479,6 +2482,33 @@ table {
 	-o-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 }
+
+
+
+/*--------------------------------------------
+25 Puppy Alert Views	
+---------------------------------------------*/
+.view-display-id-page_puppy_alert .view-header p {
+margin-bottom: 30px;
+}
+
+.view-display-id-page_puppy_alert .views-row {
+	height: 250px;
+}
+
+.view-display-id-page_puppy_alert .views-field-field-dog-picture {
+float: left;
+width: 40%;
+margin-right: 15px;
+margin-bottom: 15px;
+}
+.view-display-id-page_puppy_alert .views-field.views-field-title {
+color: #006699;
+font-size: 15px;
+font-weight: bold;
+margin-bottom: 12px;
+}
+
 
 
 
