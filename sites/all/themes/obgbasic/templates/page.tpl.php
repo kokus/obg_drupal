@@ -15,6 +15,7 @@
           <li><a href="http://obgcockerconnection.blogspot.com" title="Blogger">j</a></li>
           <li><a href="https://twitter.com/OBGcockerrescue" title="Twitter">a</a></li>
           <li><a href="http://www.pinterest.com/obgrescue" title="Pinterest">p</a></li>
+          <li><a href="http://instagram.com/obgcockerrescue" title="Instagram">t</a></li>
         </ul>
       </aside>
     <!-- End Social Icons -->
