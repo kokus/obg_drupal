@@ -11,4 +11,4 @@ sites/*/private
 error_log
 
 # remove htaccess
-!.htaccess
+.htaccess
