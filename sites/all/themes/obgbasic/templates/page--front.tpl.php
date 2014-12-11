@@ -105,7 +105,7 @@
       </div>
       <div class="tagline"><?php print $site_name; ?></div>
       <div class="heading_banner">
-            <img src="<?php echo drupal_get_path('theme', 'obgbasic'); ?>/images/dcskyline.png">
+            <img src="<?php echo drupal_get_path('theme', 'obgbasic'); ?>/images/dcskyline_xmas.png">
       </div>
     </div>
   </section>
