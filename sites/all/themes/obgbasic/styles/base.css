@@ -2546,7 +2546,10 @@ height:100px;
 
 }
 
-
+/* Added for Alumni page*/
+.views-fluid-grid-list .alumni {
+padding-top: 15px;
+}
 
 
 /*
