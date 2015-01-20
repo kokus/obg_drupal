@@ -126,7 +126,7 @@
       <?php print render($page['footer']); ?>
 
       <div class="copy">
-        <p>Copyright ©2013 Oldies But Goodies Cocker Rescue. All Rights Reserved.</p>
+        <p>Copyright ©2015 Oldies But Goodies Cocker Rescue. All Rights Reserved.</p>
       </div>
 
     </div>

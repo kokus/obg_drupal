@@ -1,4 +1,4 @@
- <?php
+<?php
 
 /**
  * @file
@@ -105,7 +105,7 @@
       </div>
       <div class="tagline"><?php print $site_name; ?></div>
       <div class="heading_banner">
-            <img src="<?php echo drupal_get_path('theme', 'obgbasic'); ?>/images/dcskyline_xmas.png">
+            <img src="<?php echo drupal_get_path('theme', 'obgbasic'); ?>/images/dcskyline.png">
       </div>
     </div>
   </section>
@@ -262,7 +262,7 @@ for shopping - we get $$$!  And <a href="shop/shop-for-a-cause">shop for a cause
       <?php print render($page['footer']); ?>
 
       <div class="copy">
-        <p>Copyright ©2013 Oldies But Goodies Cocker Rescue. All Rights Reserved.</p>
+        <p>Copyright ©2014 Oldies But Goodies Cocker Rescue. All Rights Reserved.</p>
       </div>
 
     </div>
