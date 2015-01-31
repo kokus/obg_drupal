@@ -142,3 +142,10 @@ DirectoryIndex index.php index.html index.htm
   </IfModule>
 </IfModule>
 
+<IfModule mod_suphp.c>
+        suPHP_ConfigPath /home2/cockersp
+        <Files php.ini>
+                order allow,deny
+                deny from all
+        </Files>
+</IfModule>
