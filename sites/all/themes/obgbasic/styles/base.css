@@ -386,7 +386,11 @@ div#home { padding-top: 0; }
 		right: 20px;
 		top: 20px;
 	}
-
+	div#help .donate_button_paypal {
+		position: absolute;
+		right: 20px;
+		top: 20px;
+	}
 	.front ul.pager {visibility:hidden;display: none;}
 
 
@@ -1375,6 +1379,15 @@ img.rounded {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
+
+.donate_button_paypal {
+	float: right;
+	margin-top: 8px;
+	padding: 8px 18px;
+	color: #fff;
+}
+
+
 
 /*--------------------------------------------
 12. Lists

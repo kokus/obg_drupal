@@ -193,7 +193,16 @@ for shopping - we get $$$!  And <a href="shop/shop-for-a-cause">shop for a cause
                 <h3>Donate what you can to help</h3>
                 <span class="color">Your tax deductible donation provides medical care and temporary boarding for 200 dogs per year.</span>
               </div>
-              <a class="donate_button" href="donate">Donate Now!</a>
+              <!---<a class="donate_button" href="donate">Donate Now!</a>-->
+			<div class="donate_button_paypal">
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="L2P7YRVE7EATA">
+				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</div>	
+
             </div>
 
             <div id="items">
