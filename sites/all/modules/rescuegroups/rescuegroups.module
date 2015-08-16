@@ -322,7 +322,7 @@ function get_event_query($credentials,$limit) {
                     "eventStart",
                     "eventEnd",
                     "eventAnimalAttendance",
-                    "eventLocationID"
+                    "locationID"
                   ),
       ),
   );
