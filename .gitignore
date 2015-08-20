@@ -12,3 +12,6 @@ error_log
 
 # remove htaccess
 .htaccess
+
+# remove .idea phpstorm
+.idea/
