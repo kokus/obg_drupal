@@ -15,3 +15,6 @@ error_log
 
 # remove .idea phpstorm
 .idea/
+
+#remove drupal development .editor file
+.editorconfig
