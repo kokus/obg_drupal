@@ -1,53 +1,104 @@
+
+Module: Google Analytics
+Author: Alexander Hass <http://drupal.org/user/85918>
+
+
 Description
------------
-This module adds a webform content type to your Drupal site.
-A webform can be a questionnaire, contact or request form. These can be used
-by visitor to make contact or to enable a more complex survey than polls
-provide. Submissions from a webform are saved in a database table and
-can optionally be mailed to e-mail addresses upon submission.
+===========
+Adds the Google Analytics tracking system to your website.
 
 Requirements
-------------
-Drupal 7.x
-See https://www.drupal.org/project/webform for additional requirements.
+============
+
+* Google Analytics user account
 
 Installation
-------------
-1. Copy the entire webform directory the Drupal sites/all/modules directory.
+============
+Copy the 'googleanalytics' module directory in to your Drupal
+sites/all/modules directory as usual.
 
-2. Login as an administrator. Enable the module in the "Administer" -> "Modules"
+Upgrading from 6.x-3.x and 7.x-1.x
+==================================
+If you upgrade from 6.x-3.x and 7.x-1.x (ga.js) to 7.x-2.x (analytics.js) you
+should verify if you used custom variables. Write down your settings or make a 
+screenshot. You need to re-configure the settings to use custom dimensions or
+metrics. There is no automatic upgrade path for custom variables feature. All
+other module settings are upgraded automatically.
 
-3. (Optional) Edit the settings under "Administer" -> "Configuration" ->
-   "Content authoring" -> "Webform settings"
+See https://support.google.com/analytics/answer/2795983?hl=en for more details.
 
-4. Create a webform node at node/add/webform.
+Usage
+=====
+In the settings page enter your Google Analytics account number.
 
-Upgrading from previous versions
---------------------------------
-Note that you must be running the latest 3.x version of Webform (for either
-Drupal 6 or Drupal 7) before upgrading to Webform 4.x.
+All pages will now have the required JavaScript added to the
+HTML footer can confirm this by viewing the page source from
+your browser.
 
-If you have contributed modules, custom modules, or theming on your Webforms,
-please read over the documentation for upgrading your code for Webform 4.x at
-https://drupal.org/node/1609324.
+Page specific tracking
+======================
+The default is set to "Add to every page except the listed pages". By
+default the following pages are listed for exclusion:
 
-1. MAKE A DATABASE BACKUP. Upgrading to Webform 4.x makes a signficant number of
-   database changes. If you encounter an error and need to downgrade, you must
-   restore the previous database. You can make a database backup with your
-   hosting provider, using the Backup and Migrate module, or from the command
-   line.
+admin
+admin/*
+batch
+node/add*
+node/*/*
+user/*/*
 
-2. Copy the entire webform directory the Drupal modules directory, replacing the
-   old copy of Webform. DO NOT KEEP THE OLD COPY in the same directory or
-   anywhere Drupal could possibily find it. Delete it from the server.
+These defaults are changeable by the website administrator or any other
+user with 'Administer Google Analytics' permission.
 
-3. Login as an administrative user or change the $update_free_access in
-   update.php to TRUE.
+Like the blocks visibility settings in Drupal core, there is a choice for
+"Add if the following PHP code returns TRUE." Sample PHP snippets that can be
+used in this textarea can be found on the handbook page "Overview-approach to
+block visibility" at http://drupal.org/node/64135.
 
-4. Run update.php (at http://www.example.com/update.php).
+Custom dimensions and metrics
+=============================
+One example for custom dimensions tracking is the "User roles" tracking.
 
-Support
--------
-Please use the issue queue for filing bugs with this module at
-http://drupal.org/project/issues/webform
+1. In the Google Analytics Management Interface (http://www.google.com/analytics/)
+   you need to setup Dimension #1 with name e.g. "User roles". This step is
+   required. Do not miss it, please.
 
+2. Enter the below configuration data into the Drupal custom dimensions settings
+   form under admin/config/system/googleanalytics. You can also choose another
+   index, but keep it always in sync with the index used in step #1.
+
+   Index: 1
+   Value: [current-user:role-names]
+
+More details about custom dimensions and metrics can be found in the Google API
+documentation at https://developers.google.com/analytics/devguides/collection/analyticsjs/custom-dims-mets
+
+Advanced Settings
+=================
+You can include additional JavaScript snippets in the custom javascript
+code textarea. These can be found on the official Google Analytics pages
+and a few examples at http://drupal.org/node/248699. Support is not
+provided for any customisations you include.
+
+To speed up page loading you may also cache the Google Analytics "analytics.js"
+file locally.
+
+Manual JS debugging
+===================
+For manual debugging of the JS code you are able to create a test node. This
+is the example HTML code for this test node. You need to enable debugging mode
+in your Drupal configuration of Google Analytics settings to see verbose
+messages in your browsers JS console.
+
+Title: Google Analytics test page
+
+Body:
+<ul>
+  <li><a href="mailto:foo@example.com">Mailto</a></li>
+  <li><a href="/files/test.txt">Download file</a></li>
+  <li><a class="colorbox" href="#">Open colorbox</a></li>
+  <li><a href="http://example.com/">External link</a></li>
+  <li><a href="/go/test">Go link</a></li>
+</ul>
+
+Text format: Full HTML
