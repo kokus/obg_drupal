@@ -1,16 +1,53 @@
-Place downloaded and custom modules that extend your site functionality beyond
-Drupal core in this directory to ensure clean separation from core modules and
-to facilitate safe, self-contained code updates. Contributed modules from the
-Drupal community may be downloaded at http://drupal.org/project/modules.
+Description
+-----------
+This module adds a webform content type to your Drupal site.
+A webform can be a questionnaire, contact or request form. These can be used
+by visitor to make contact or to enable a more complex survey than polls
+provide. Submissions from a webform are saved in a database table and
+can optionally be mailed to e-mail addresses upon submission.
 
-It is safe to organize modules into subdirectories, such as "contrib" for
-contributed modules, and "custom" for custom modules. Note that if you move a
-module to a subdirectory after it has been enabled, you may need to clear the
-Drupal cache so that it can be found.
+Requirements
+------------
+Drupal 7.x
+See https://www.drupal.org/project/webform for additional requirements.
 
-In multisite configuration, modules found in this directory are available to
-all sites. Alternatively, the sites/your_site_name/modules directory pattern may
-be used to restrict modules to a specific site instance.
+Installation
+------------
+1. Copy the entire webform directory the Drupal sites/all/modules directory.
 
-Refer to the "Developing for Drupal" section of the README.txt in the Drupal
-root directory for further information on extending Drupal with custom modules.
+2. Login as an administrator. Enable the module in the "Administer" -> "Modules"
+
+3. (Optional) Edit the settings under "Administer" -> "Configuration" ->
+   "Content authoring" -> "Webform settings"
+
+4. Create a webform node at node/add/webform.
+
+Upgrading from previous versions
+--------------------------------
+Note that you must be running the latest 3.x version of Webform (for either
+Drupal 6 or Drupal 7) before upgrading to Webform 4.x.
+
+If you have contributed modules, custom modules, or theming on your Webforms,
+please read over the documentation for upgrading your code for Webform 4.x at
+https://drupal.org/node/1609324.
+
+1. MAKE A DATABASE BACKUP. Upgrading to Webform 4.x makes a signficant number of
+   database changes. If you encounter an error and need to downgrade, you must
+   restore the previous database. You can make a database backup with your
+   hosting provider, using the Backup and Migrate module, or from the command
+   line.
+
+2. Copy the entire webform directory the Drupal modules directory, replacing the
+   old copy of Webform. DO NOT KEEP THE OLD COPY in the same directory or
+   anywhere Drupal could possibily find it. Delete it from the server.
+
+3. Login as an administrative user or change the $update_free_access in
+   update.php to TRUE.
+
+4. Run update.php (at http://www.example.com/update.php).
+
+Support
+-------
+Please use the issue queue for filing bugs with this module at
+http://drupal.org/project/issues/webform
+
