@@ -271,7 +271,7 @@ for shopping - we get $$$!  And <a href="shop/shop-for-a-cause">shop for a cause
       <?php print render($page['footer']); ?>
 
       <div class="copy">
-        <p>Copyright ©2015 Oldies But Goodies Cocker Rescue. All Rights Reserved.</p>
+        <p>Copyright ©2017 Oldies But Goodies Cocker Rescue. All Rights Reserved.</p>
       </div>
 
     </div>
