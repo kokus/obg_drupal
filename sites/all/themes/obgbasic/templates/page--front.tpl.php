@@ -165,7 +165,7 @@
                       <h4><a href="donate">Donate</a></h4>
                     </div>
                     <p>Every little bit counts!  Feel confident knowing that your donation will go directly to the dogs.</p>
-                    <p style="text-align:center;"><b>CFC#&nbsp;27768&nbsp;&nbsp;|&nbsp;&nbsp;CVC#&nbsp;3283</b></p>
+                    <p style="text-align:center;"><b>CFC#&nbsp;27768</b></p>
                   </div>
                </div>
                <div class="box one_half column_last">
