@@ -44,15 +44,17 @@ function _test_stuff() {
 
   // Check if it is the first time and use lastupdate '01/01/2000'
   //$last_update = db_query("SELECT MAX(animal_last_update) FROM {rescuegroups_animal}")->fetchField();
-  //if($last_update) {
-   // $lastupdate = $last_update;
-  //}
+  /*if($last_update) {
+    $lastupdate = $last_update;
+   }
 
-  //$api_query = get_animal_query($credentials,30,$lastupdate);
-  //dpm($api_query);
-  //$datajson = curl_json($api_query);
-  //dpm($datajson);
+  $credentials = get_rescuegroups_api_credentials();
 
+  $api_query = get_animal_query($credentials,30,$lastupdate);
+  dpm($api_query);
+  $datajson = curl_json($api_query);
+  dpm($datajson);
+*/*
     //$result_image = db_query("SELECT 1 FROM rescuegroups_animal_image where animal_media_id = '26'");
    //$events = _rescuegroups_pull_events();
     //dsm('record:');
@@ -122,7 +124,7 @@ function _rescuegroups_pull_animals() {
   $credentials = get_rescuegroups_api_credentials();
 
  //Get animal that have last updated field is greater than the most recent last updated in DB
-  $api_query = get_animal_query($credentials,100,$lastupdate);
+  $api_query = get_animal_query($credentials,50,$lastupdate);
   $datajson = curl_json($api_query);
   //return $datajson;
   foreach ($datajson as $row) {
@@ -212,7 +214,7 @@ function get_animal_query($credentials,$limit,$lastupdate) {
       "search" => array (
           "resultStart" => 0,
           "resultLimit" => $limit,
-          "resultSort" => "animalID",
+          "resultSort" => "animalUpdatedDate",
           "resultOrder" => "desc",
           "calcFoundRows" => "Yes",
           "filters" => array(
