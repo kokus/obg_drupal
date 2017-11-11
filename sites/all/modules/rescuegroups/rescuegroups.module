@@ -54,7 +54,7 @@ function _test_stuff() {
   dpm($api_query);
   $datajson = curl_json($api_query);
   dpm($datajson);
-*/*
+*/
     //$result_image = db_query("SELECT 1 FROM rescuegroups_animal_image where animal_media_id = '26'");
    //$events = _rescuegroups_pull_events();
     //dsm('record:');
