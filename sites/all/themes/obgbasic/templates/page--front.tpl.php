@@ -195,12 +195,7 @@ for shopping - we get $$$!  And <a href="shop/shop-for-a-cause">shop for a cause
               </div>
               <!---<a class="donate_button" href="donate">Donate Now!</a>-->
 			<div class="donate_button_paypal">
-				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="L2P7YRVE7EATA">
-				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-				</form>
+        <p><a class="dbox-donation-button" href="https://donorbox.org/spring-2018-fundraising-campaign?recurring=true" style="background:#006699 url(https://d1iczxrky3cnb2.cloudfront.net/red_logo.png) no-repeat 37px center; color: #fff;text-decoration: none;font-family: Verdana,sans-serif;display: inline-block;font-size: 16px;padding: 15px 38px 15px 75px; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; box-shadow: 0 1px 0 0 #1f5a89; text-shadow: 0 1px rgba(0, 0, 0, 0.3);">Donate</a></p>
 			</div>	
 
             </div>

@@ -389,7 +389,7 @@ div#home { padding-top: 0; }
 	div#help .donate_button_paypal {
 		position: absolute;
 		right: 20px;
-		top: 20px;
+		top: 5px;
 	}
 	.front ul.pager {visibility:hidden;display: none;}
 
