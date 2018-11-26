@@ -133,7 +133,7 @@
            <div class="sub_heading">
               <h2>Helping Cockers, Young and Old</h2>
               <span class="line"></span>
-            </div> 
+            </div>
 
             <div class="full" id="revolution_wrap">
 
@@ -175,8 +175,8 @@
                       <span class="icon general-enclosed">2</span>
                       <h4><a href="/shop">Shop</a></h4>
                     </div>
-                    <p>Use <a href="shop/help-obg-online">our links</a> for <a 
-href="http://smile.amazon.com/ref=smi_ge_rl_rd_gw?_encoding=UTF8&ein=54-1833707">Amazon Smile</a> or <a href="http://www.igive.com/welcome/lp7/cr44b.cfm">iGive</a> 
+                    <p>Use <a href="shop/help-obg-online">our links</a> for <a
+href="http://smile.amazon.com/ref=smi_ge_rl_rd_gw?_encoding=UTF8&ein=54-1833707">Amazon Smile</a> or <a href="http://www.igive.com/welcome/lp7/cr44b.cfm">iGive</a>
 for shopping - we get $$$!  And <a href="shop/shop-for-a-cause">shop for a cause</a>, by purchasing items for which OBG gets a donation!.</p>
                   </div>
                </div>
@@ -195,8 +195,8 @@ for shopping - we get $$$!  And <a href="shop/shop-for-a-cause">shop for a cause
               </div>
               <!---<a class="donate_button" href="donate">Donate Now!</a>-->
 			<div class="donate_button_paypal">
-        <p><a class="dbox-donation-button" href="https://donorbox.org/donateandhelpsavealife" style="background:#006699 url(https://d1iczxrky3cnb2.cloudfront.net/red_logo.png) no-repeat 37px center; color: #fff;text-decoration: none;font-family: Verdana,sans-serif;display: inline-block;font-size: 16px;padding: 15px 38px 15px 75px; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; box-shadow: 0 1px 0 0 #1f5a89; text-shadow: 0 1px rgba(0, 0, 0, 0.3);">Donate</a></p>
-			</div>	
+        <p><a class="dbox-donation-button" href="https://donorbox.org/2018-winter-drive" style="background:#006699 url(https://d1iczxrky3cnb2.cloudfront.net/red_logo.png) no-repeat 37px center; color: #fff;text-decoration: none;font-family: Verdana,sans-serif;display: inline-block;font-size: 16px;padding: 15px 38px 15px 75px; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; box-shadow: 0 1px 0 0 #1f5a89; text-shadow: 0 1px rgba(0, 0, 0, 0.3);">Donate</a></p>
+			</div>
 
             </div>
 
