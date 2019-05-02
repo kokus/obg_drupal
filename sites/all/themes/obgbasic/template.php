@@ -12,7 +12,7 @@
  * used as an alternative to directly editing or adding code to templates. Its
  * worth spending some time to learn more about these functions - they are a
  * powerful way to easily modify the output of any template variable.
- * 
+ *
  * Preprocess and Process Functions SEE: http://drupal.org/node/254940#variables-processor
  * 1. Rename each function and instance of "obgbasic" to match
  *    your subthemes name, e.g. if your theme name is "footheme" then the function
@@ -34,12 +34,12 @@ function obgbasic_html_head_alter ( &$head_elements ) {
 			"http-name" => "viewport",
 			"content" => "width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1, user-scalable=no"
 			),
-	);			
+	);
 }
 
 /**
  * Alter the $breadcrumb var
- * 
+ *
  */
 function obgbasic_breadcrumb($variables) {
   $sep = ' &raquo; ';
@@ -56,12 +56,12 @@ function obgbasic_breadcrumb($variables) {
  * Process variables for the html template.
  */
 function obgbasic_preprocess_html(&$vars) {
-  drupal_add_css('http://fonts.googleapis.com/css?family=Pacifico|Cabin:400,700,600,500',array('type' => 'external'));
+  drupal_add_css('https://fonts.googleapis.com/css?family=Pacifico|Cabin:400,700,600,500',array('type' => 'external'));
 
   //remove welcome title on front page
   if (drupal_is_front_page()) {
     $vars['title']="";
-  } 
+  }
 
 }
 
@@ -71,7 +71,7 @@ function obgbasic_preprocess_html(&$vars) {
 function obgbasic_preprocess_page(&$vars) {
   //removes no content has been promoted to homepage
   unset($vars['page']['content']['system_main']['default_message']);
-  
+
   //removes welcome to page title on front page
   if ($vars['is_front']) {
     $vars['title'] = '';
@@ -86,7 +86,7 @@ function obgbasic_form_alter(&$form, &$form_state, $form_id) {
 			$form['actions']['submit']['#value'] = t('SEARCH');
 			$form['actions']['submit']['#attributes'] = array('class' => array('button white'));
 	 }
-	
+
   //$form['actions']['submit']['#attributes']['class'][] = 'button white';
 }
 
@@ -179,7 +179,3 @@ function obgbasic_preprocess_block(&$vars) {
 function obgbasic_process_block(&$vars) {
 }
 // */
-
-
-
-
