@@ -36,9 +36,9 @@ function rescuegroups_menu() {
 }
 
 
-function _test_stuff() { 
+function _test_stuff() {
     //$animals = _rescuegroups_pull_animals();
-   
+
    $lastupdate='01/01/2000 12:00';
   $items = array();
 
@@ -68,27 +68,27 @@ function _test_stuff() {
 
 
 /**
-* Administration Form for rescuegroups module 
+* Administration Form for rescuegroups module
 */
 function rescuegroups_admin_form($form, &$form_state) {
   $form = array();
   $form['rescuegroups_username'] = array(
-    '#type' => 'textfield', 
-    '#title' => t('API Username'), 
+    '#type' => 'textfield',
+    '#title' => t('API Username'),
     '#description' => t('Enter your Rescuegoups Account API username.'),
     '#default_value' => variable_get('rescuegroups_username', ' '),
     '#required' => TRUE,
   );
   $form['rescuegroups_password'] = array(
-    '#type' => 'textfield', 
-    '#title' => t('API Password'), 
+    '#type' => 'textfield',
+    '#title' => t('API Password'),
     '#description' => t('Enter your Rescuegoups Account API password.'),
     '#default_value' => variable_get('rescuegroups_password', ' '),
     '#required' => TRUE,
   );
   $form['rescuegroups_account'] = array(
-    '#type' => 'textfield', 
-    '#title' => t('API Account'), 
+    '#type' => 'textfield',
+    '#title' => t('API Account'),
     '#description' => t('Enter your Rescuegoups Account Number.'),
     '#default_value' => variable_get('rescuegroups_account', ' '),
     '#required' => TRUE,
@@ -131,9 +131,9 @@ function _rescuegroups_pull_animals() {
     $animal_ID = $row['animalID'];
     //check if animal row exists
     $result = db_query("SELECT 1 FROM rescuegroups_animal where animal_id = '".$animal_ID."'");
-   
+
     //Animal Exists - UPDATE
-    if($result->rowCount()>0) {        
+    if($result->rowCount()>0) {
       //UPDATE ANIMAL
       update_animal($row,$animal_ID);
     } else {
@@ -170,7 +170,7 @@ function _rescuegroups_pull_locations() {
 function _rescuegroups_pull_events() {
   $items = array();
 
-  //empty both tables 
+  //empty both tables
   db_delete('rescuegroups_event')->execute();
   db_delete('rescuegroups_event_animal')->execute();
 
@@ -275,7 +275,7 @@ function get_location_query($credentials,$limit) {
         "resultLimit" => $limit,
         "resultSort" => "locationID",
         "resultOrder" => "asc",
-        "calcFoundRows" => "Yes", 
+        "calcFoundRows" => "Yes",
         "filters" => array(
             array(
                 "fieldName" => "locationID",
@@ -368,7 +368,7 @@ function get_animal_event_query($event_id) {
 }
 
 function insert_animal($row) {
-   //Animal Doesn't Exist - INSERT 
+   //Animal Doesn't Exist - INSERT
     db_insert('rescuegroups_animal')
       ->fields(array(
         'animal_id' => $row['animalID'],
@@ -397,7 +397,7 @@ function insert_animal($row) {
       ))
       ->execute();
       //Insert images if $row['animalPictures']
-      if(count($row['animalPictures']) > 0) {
+      if(is_array($row['animalPictures']) && count($row['animalPictures']) > 0) {
         foreach ($row['animalPictures'] as $imagerow) {
           db_insert('rescuegroups_animal_image')
             ->fields(array(
@@ -440,8 +440,8 @@ function update_animal($row,$animalID) {
       ->condition('animal_id', $animalID, '=')
       ->execute();
       //Insert or Update Images
-      if(count($row['animalPictures']) > 0) {
-        //remove all dog images 
+      if(is_array($row['animalPictures']) && count($row['animalPictures']) > 0) {
+        //remove all dog images
         db_delete('rescuegroups_animal_image')->condition('animal_id', $animalID)->execute();
         //insert only new images with 1 to 6
         foreach ($row['animalPictures'] as $imagerow) {
@@ -487,9 +487,10 @@ function insert_event($row) {
         'event_end_date' => date('Y-m-d H:i', strtotime($row['eventEnd'])),
       ))
       ->execute();
-      //Insert animals attending  if $row['eventAnimalAttendance'] 
+      //Insert animals attending  if $row['eventAnimalAttendance']
 
-      if(count($row['eventAnimalAttendance']) > 0) {
+      if(is_array($row['eventAnimalAttendance']) && count($row['eventAnimalAttendance']) > 0) {
+
 
         $api_query = get_animal_event_query($row['eventID']);
         $data_json = curl_json($api_query);
