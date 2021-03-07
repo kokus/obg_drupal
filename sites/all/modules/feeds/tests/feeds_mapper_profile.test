@@ -10,6 +10,9 @@
  */
 class FeedsMapperProfileTestCase extends FeedsMapperTestCase {
 
+  /**
+   * {@inheritdoc}
+   */
   public static function getInfo() {
     return array(
       'name' => 'Mapper: Profile',
@@ -18,13 +21,16 @@ class FeedsMapperProfileTestCase extends FeedsMapperTestCase {
     );
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function setUp() {
     // Call parent setup with required modules.
     parent::setUp(array('profile'));
   }
 
   /**
-   * Basic test loading a doulbe entry CSV file.
+   * Basic test loading a double entry CSV file.
    */
   public function test() {
     // Create profile fields.
@@ -83,7 +89,7 @@ class FeedsMapperProfileTestCase extends FeedsMapperTestCase {
     $this->drupalPost('admin/structure/feeds/profile_import/settings', $edit, 'Save');
 
     // Import CSV file.
-    $this->importFile('profile_import', $this->absolutePath() .'/tests/feeds/profile.csv');
+    $this->importFile('profile_import', $this->absolutePath() . '/tests/feeds/profile.csv');
     $this->assertText('Created 2 users.');
 
     // Check the two imported users.
