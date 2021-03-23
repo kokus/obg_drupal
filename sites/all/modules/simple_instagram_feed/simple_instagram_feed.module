@@ -54,6 +54,16 @@ function simple_instagram_feed_block_configure($delta = '') {
         '#default_value' => variable_get('simple_instagram_display_biography', 1),
       ];
 
+      $form['simple_instagram_captions'] = [
+        '#type' => 'checkbox',
+        '#title' => t('Display Captions'),
+        '#description' => t('Enables displaying captions for each post as overlay on hover.'),
+        '#default_value' => variable_get('simple_instagram_captions', 0),
+        '#attributes' => [
+          'id' => 'simple_instagram_captions',
+        ],
+      ];
+
       $form['simple_instagram_items'] = [
         '#type' => 'textfield',
         '#size' => 3,
@@ -137,8 +147,37 @@ function simple_instagram_feed_block_configure($delta = '') {
         '#options' => ['true' => 'True', 'false' => 'False'],
         '#title' => t('Styling'),
         '#description' => t('Set to False to omit instagramFeed styles and provide your own in your CSS.'),
+        '#states' => [
+        'disabled' => [
+            ':input[id="simple_instagram_captions"]' => ['checked' => TRUE],
+          ],
+        ],
         '#default_value' => variable_get('simple_instagram_styling', 'true'),
       ];
+
+      $simple_image_sizes = [
+        '640' => 640,
+        '480' => 480,
+        '320' => 320,
+        '240' => 240,
+        '150' => 150,
+      ];
+
+      $form['simple_instagram_image_size'] = [
+        '#type' => 'select',
+        '#options' => $simple_image_sizes,
+        '#title' => t('Image Size'),
+        '#description' => t('Scale of items to build gallery. Accepted values [150, 240, 320, 480, 640].'),
+        '#default_value' => variable_get('simple_instagram_image_size', 640),
+      ];
+
+      $form['simple_instagram_lazy_load'] = [
+        '#type' => 'checkbox',
+        '#title' => t('Lazyload assets'),
+        '#description' => t('Do you wish to Lazy-load on this Instagram Feed?'),
+        '#default_value' => variable_get('simple_instagram_lazy_load', 0),
+      ];
+
       break;
   }
   return $form;
@@ -160,6 +199,9 @@ function simple_instagram_feed_block_save($delta = '', $edit = array()) {
       variable_set('simple_instagram_items_per_row_l_960', $edit['simple_instagram_items_per_row_l_960']);
       variable_set('simple_instagram_items_per_row_h_960', $edit['simple_instagram_items_per_row_h_960']);
       variable_set('simple_instagram_styling', $edit['simple_instagram_styling']);
+      variable_set('simple_instagram_captions', $edit['simple_instagram_captions']);
+      variable_set('simple_instagram_image_size', $edit['simple_instagram_image_size']);
+      variable_set('simple_instagram_lazy_load', $edit['simple_instagram_lazy_load']);
 
       break;
   }
@@ -225,6 +267,9 @@ function simple_instagram_feed_init() {
     'instagram_items_per_row_l_960' => variable_get('simple_instagram_items_per_row_l_960') + 1,
     'instagram_items_per_row_h_960' => variable_get('simple_instagram_items_per_row_h_960') + 1,
     'instagram_styling' => variable_get('simple_instagram_styling'),
+    'instagram_captions' => variable_get('simple_instagram_captions'),
+    'instagram_image_size' => variable_get('simple_instagram_image_size'),
+    'instagram_lazy_load' => variable_get('simple_instagram_lazy_load'),
   ];
   drupal_add_js(array('simple_instagram_feed' => $computed_data), 'setting');
 }
