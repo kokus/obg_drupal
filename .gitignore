@@ -7,3 +7,8 @@ sites/*/private
 
 # Ignore .htaccess
 .htaccess
+.htaccess*
+
+# ignore directories Gator
+.well-known
+error_log
