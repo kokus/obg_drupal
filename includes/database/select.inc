@@ -964,7 +964,7 @@ class SelectQuery extends Query implements SelectQueryInterface {
    */
   protected $forUpdate = FALSE;
 
-  public function __construct($table, $alias = NULL, DatabaseConnection $connection, $options = array()) {
+  public function __construct($table, $alias, DatabaseConnection $connection, $options = array()) {
     $options['return'] = Database::RETURN_STATEMENT;
     parent::__construct($connection, $options);
     $this->where = new DatabaseCondition('AND');
@@ -1504,7 +1504,14 @@ class SelectQuery extends Query implements SelectQueryInterface {
     // the query will be executed, it will be recompiled using the proper
     // placeholder generator anyway.
     if (!$this->compiled()) {
-      $this->compile($this->connection, $this);
+      try {
+        $this->compile($this->connection, $this);
+      }
+      // PHP does not allow exceptions to be thrown in __toString(), so trigger
+      // a fatal error instead.
+      catch (InvalidQueryConditionOperatorException $e) {
+        drupal_trigger_fatal_error($e->getMessage());
+      }
     }
 
     // Create a sanitized comment string to prepend to the query.
