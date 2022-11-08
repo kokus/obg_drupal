@@ -12,3 +12,7 @@ sites/*/private
 # ignore directories Gator
 .well-known
 error_log
+
+# ignore backup directory
+/db_backup/
+
