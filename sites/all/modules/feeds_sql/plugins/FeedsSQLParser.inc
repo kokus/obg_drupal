@@ -16,9 +16,12 @@ class FeedsSQLParser extends FeedsParser {
     $result->description = '';
     $result->link = '';
     // Iterate through the fetcher results
-    foreach ($fetcher_result->getRaw() as $index => $row) {
-      $result->items[$index] = (array) $row;
-    }
+    if (is_array($fetcher_result) || is_object($fetcher_result)) {
+      foreach ($fetcher_result->getRaw() as $index => $row) {
+        $result->items[$index] = (array) $row;
+      }
+  }
+
     // Create a result object and return it.
     return $result;
   }

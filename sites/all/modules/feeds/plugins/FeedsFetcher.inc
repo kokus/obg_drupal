@@ -217,7 +217,7 @@ class FeedsFetcherResult extends FeedsResult {
    *   The sanitized content as a string.
    */
   public function sanitizeRaw($raw) {
-    if (substr($raw, 0, 3) == pack('CCC', 0xef, 0xbb, 0xbf)) {
+    if (is_string($raw) && substr($raw, 0, 3) == pack('CCC', 0xef, 0xbb, 0xbf)) {
       $raw = substr($raw, 3);
     }
     return $raw;
@@ -239,7 +239,7 @@ class FeedsFetcherResult extends FeedsResult {
    *   The sanitized content as a string.
    */
   public function sanitizeRawOptimized(&$raw) {
-    if (substr($raw, 0, 3) == pack('CCC', 0xef, 0xbb, 0xbf)) {
+    if (is_string($raw) && substr($raw, 0, 3) == pack('CCC', 0xef, 0xbb, 0xbf)) {
       $raw = substr($raw, 3);
     }
     return $raw;

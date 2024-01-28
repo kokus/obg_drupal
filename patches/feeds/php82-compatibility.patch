@@ -1,0 +1,54 @@
+diff --git a/sites/all/modules/feeds/includes/FeedsHTTPCacheItem.inc b/sites/all/modules/feeds/includes/FeedsHTTPCacheItem.inc
+index 3b67122..20b7080 100644
+--- a/sites/all/modules/feeds/includes/FeedsHTTPCacheItem.inc
++++ b/sites/all/modules/feeds/includes/FeedsHTTPCacheItem.inc
+@@ -8,6 +8,7 @@
+ /**
+  * Class of a cached item.
+  */
++#[AllowDynamicProperties]
+ class FeedsHTTPCacheItem {
+ 
+   /**
+diff --git a/sites/all/modules/feeds/plugins/FeedsFetcher.inc b/sites/all/modules/feeds/plugins/FeedsFetcher.inc
+index 89a6b2c..def698c 100644
+--- a/sites/all/modules/feeds/plugins/FeedsFetcher.inc
++++ b/sites/all/modules/feeds/plugins/FeedsFetcher.inc
+@@ -217,7 +217,7 @@ class FeedsFetcherResult extends FeedsResult {
+    *   The sanitized content as a string.
+    */
+   public function sanitizeRaw($raw) {
+-    if (substr($raw, 0, 3) == pack('CCC', 0xef, 0xbb, 0xbf)) {
++    if (is_string($raw) && substr($raw, 0, 3) == pack('CCC', 0xef, 0xbb, 0xbf)) {
+       $raw = substr($raw, 3);
+     }
+     return $raw;
+@@ -239,7 +239,7 @@ class FeedsFetcherResult extends FeedsResult {
+    *   The sanitized content as a string.
+    */
+   public function sanitizeRawOptimized(&$raw) {
+-    if (substr($raw, 0, 3) == pack('CCC', 0xef, 0xbb, 0xbf)) {
++    if (is_string($raw) && substr($raw, 0, 3) == pack('CCC', 0xef, 0xbb, 0xbf)) {
+       $raw = substr($raw, 3);
+     }
+     return $raw;
+diff --git a/sites/all/modules/feeds_sql/plugins/FeedsSQLParser.inc b/sites/all/modules/feeds_sql/plugins/FeedsSQLParser.inc
+index 680d138..f9dee83 100644
+--- a/sites/all/modules/feeds_sql/plugins/FeedsSQLParser.inc
++++ b/sites/all/modules/feeds_sql/plugins/FeedsSQLParser.inc
+@@ -16,9 +16,12 @@ class FeedsSQLParser extends FeedsParser {
+     $result->description = '';
+     $result->link = '';
+     // Iterate through the fetcher results
+-    foreach ($fetcher_result->getRaw() as $index => $row) {
+-      $result->items[$index] = (array) $row;
+-    }
++    if (is_array($fetcher_result) || is_object($fetcher_result)) {
++      foreach ($fetcher_result->getRaw() as $index => $row) {
++        $result->items[$index] = (array) $row;
++      }
++  }
++
+     // Create a result object and return it.
+     return $result;
+   }
