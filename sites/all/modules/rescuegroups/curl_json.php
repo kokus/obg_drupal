@@ -37,7 +37,8 @@ function curl_json($data)  {
 	 //return json_decode($results, true); 
 		
 	//returns only data array
-	 $results = json_decode(utf8_encode($result), true);
+	//$results = json_decode(utf8_encode($result), true);  'FIX DEPRECATED'
+	$results = json_decode(mb_convert_encoding($result, 'UTF-8', 'ISO-8859-1'), true);
 	 return $results['data'];
 
 	}	
