@@ -16,9 +16,9 @@ composer_version: "2"
 web_environment: []
 nodejs_version: "16"
 
-hooks:
-  post-start:
-  - composer: global require drush/drush:^8.4.12
+#hooks:
+#  post-start:
+#  - composer: global require drush/drush:8.x-dev
 
 # This config.yaml was created with ddev version v1.17.7
 # webimage: drud/ddev-webserver:v1.17.7
